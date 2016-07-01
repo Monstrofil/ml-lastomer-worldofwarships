@@ -3,8 +3,6 @@ import os, sys
 imports = []
 vars = []
 
-print os.walk("src"), "sdfsdf"
-
 for root, subdirs, files in os.walk("src"):
     for file in files:
         if file.endswith(".as") and not '__Global' in file:
