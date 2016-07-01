@@ -1,0 +1,18 @@
+package 
+{
+	/**
+	 * ...
+	 * @author Monstrofil
+	 */
+{imports}
+	public class __Global 
+	{
+{variables}
+		public function __Global() 
+		{
+			
+		}
+		
+	}
+
+}
