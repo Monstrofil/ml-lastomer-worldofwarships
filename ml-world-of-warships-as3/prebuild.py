@@ -8,7 +8,7 @@ print os.walk("src"), "sdfsdf"
 for root, subdirs, files in os.walk("src"):
     for file in files:
         if file.endswith(".as") and not '__Global' in file:
-            import_path = os.path.join(root, file).replace("src/", '').replace("\\", '.').replace('.as', '')
+            import_path = os.path.join(root, file).replace("src/", '').replace("\\", '.').replace('.as', '').replace('/', '.')
             class_name = import_path.replace('.', '_')
             
             print "    import %s;"%import_path
