@@ -1,5 +1,5 @@
 cp -R ml_client tempdirectory
 python prebuild.py
-rm -R $WORKSPACE/build/scripts/client
+mkdir $WORKSPACE/build/scripts/
 cp -R tempdirectory $WORKSPACE/build/scripts/client
 rm -R tempdirectory
