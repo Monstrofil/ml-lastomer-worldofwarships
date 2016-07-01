@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'28.06.2016'</value>
+      <value>'01.07.2016'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -32,16 +32,16 @@
     </define>
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
-      <path-element>D:\workspace\_XVM\xvm_client_swf\World of Warships Hammer\src</path-element>
+      <path-element>D:\_develop\ml-lastomer-worldofwarships\ml-world-of-warships-as3\src</path-element>
       <path-element>D:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>D:\workspace\_XVM\xvm_client_swf\World of Warships Hammer\lib\Console.swc</path-element>
-      <path-element>D:\workspace\_XVM\xvm_client_swf\World of Warships Hammer\lib\wows_library.swc</path-element>
+      <path-element>D:\_develop\ml-lastomer-worldofwarships\ml-world-of-warships-as3\lib\Console.swc</path-element>
+      <path-element>D:\_develop\ml-lastomer-worldofwarships\ml-world-of-warships-as3\lib\wows_library.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>D:\workspace\_XVM\xvm_client_swf\World of Warships Hammer\src\XVMBackground.as</path-element>
+    <path-element>D:\_develop\ml-lastomer-worldofwarships\ml-world-of-warships-as3\src\XVMBackground.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>

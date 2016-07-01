@@ -66,12 +66,6 @@ package
             Cc.y = 200;
             Cc.x = 200;
             
-            var loader:ML_ManySWFLoader = new ML_ManySWFLoader();
-            loader.addEventListener(Event.COMPLETE, this.onExternalLoaded);
-            loader.load(arg1);
-        }
-        
-        private function onExternalLoaded(e:Event) {
             this.xvm = new ML_UnboundApplication("XVMBackground.xml", this.stage, "RootBlock");
             parent.addChild(xvm);
         }

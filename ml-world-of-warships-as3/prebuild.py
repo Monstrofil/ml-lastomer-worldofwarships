@@ -6,7 +6,7 @@ vars = []
 for root, subdirs, files in os.walk("src"):
     for file in files:
         if file.endswith(".as") and not '__Global' in file:
-            import_path = os.path.join(root, file).replace("src/", '').replace("\\", '.').replace('.as', '').replace('/', '.')
+            import_path = os.path.join(root, file).replace("src/", '').replace("\\", '.').replace('.as', '').replace('/', '.').replace("src.", "")
             class_name = import_path.replace('.', '_')
             
             print "    import %s;"%import_path
