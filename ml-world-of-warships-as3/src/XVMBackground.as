@@ -64,13 +64,8 @@ package
             Cc.config.commandLineAllowed = true;
             Cc.start(this.parent, "debug");
             Cc.y = 200;
-            Cc.x = 200;        
+            Cc.x = 200;
             
-            GameDelegate.addCallBack("ML_onFolderListed", this, this.onFolderListed);
-            GameDelegate.call("ML_getFilesList", ["plugins/", "ML_onFolderListed"]);
-        }
-        
-        private function onFolderListed(arg1:Array) {
             var loader:ML_ManySWFLoader = new ML_ManySWFLoader();
             loader.addEventListener(Event.COMPLETE, this.onExternalLoaded);
             loader.load(arg1);
