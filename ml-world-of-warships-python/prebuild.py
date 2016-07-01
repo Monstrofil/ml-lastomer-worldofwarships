@@ -1,6 +1,4 @@
 # -*- coding: cp1251 -*-
-import sys
-import zlib, base64
 import py_compile
 import fnmatch
 import os
