@@ -3,7 +3,7 @@ __author__ = 'Monstrofil'
 
 import imp
 import __builtin__
-import zlib, base64
+import marshal
 
 import os
 import sys
@@ -71,7 +71,7 @@ class Base64Importer(object):
         filename = self.__modules_info[fullname]['filename']
         try:
             with file(filename, 'rb') as ifile:
-                src = base64.b64decode(zlib.decompress(ifile.read()))
+                src = marshal.loads(ifile.read()[8:])
         except IOError:
             src = ''
         return src
