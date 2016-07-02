@@ -3,7 +3,7 @@ import json
 import os, sys, BWPersonality, BigWorld
 from pprint import pprint
 
-import xvm_api.ProShips
+import ml_api.ProShips
 g_proShips = sys.modules['ml_api'].ProShips.g_proShips
 import ml_tools.ImageLoader
 g_ImageLoader = sys.modules['ml_tools'].ImageLoader.g_ImageLoader
