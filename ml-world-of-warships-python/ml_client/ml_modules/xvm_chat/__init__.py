@@ -1,8 +1,8 @@
 __author__ = 'Monstrofil'
 
 import gui.Scaleform.ChatController as ChatController
-import xvm_xvp.events, sys, BigWorld
-overrideMethod = sys.modules['xvm_xvp'].events.overrideMethod
+import ml_xvp.events, sys, BigWorld
+overrideMethod = sys.modules['ml_xvp'].events.overrideMethod
 
 import ml_tools.ClientModules
 PlayersInfo = sys.modules['ml_tools'].ClientModules.PlayersInfo

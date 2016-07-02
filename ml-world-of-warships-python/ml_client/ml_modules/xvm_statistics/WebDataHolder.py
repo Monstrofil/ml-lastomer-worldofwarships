@@ -7,8 +7,8 @@ import xvm_api.ProShips
 g_proShips = sys.modules['ml_api'].ProShips.g_proShips
 import ml_tools.ImageLoader
 g_ImageLoader = sys.modules['ml_tools'].ImageLoader.g_ImageLoader
-import xvm_xvp.events
-registerEvent = sys.modules['xvm_xvp'].events.registerEvent
+import ml_xvp.events
+registerEvent = sys.modules['ml_xvp'].events.registerEvent
 
 import ml_tools.ClientModules
 PlayersInfo = sys.modules['ml_tools'].ClientModules.PlayersInfo

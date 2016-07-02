@@ -3,8 +3,8 @@ import BWPersonality, sys, os
 from gui.Scaleform.Battle import Battle
 from os import listdir
 from os.path import isfile, join
-import xvm_xvp.events
-registerEvent = sys.modules['xvm_xvp'].events.registerEvent
+import ml_xvp.events
+registerEvent = sys.modules['ml_xvp'].events.registerEvent
 
 import ResMgr
 resModPath = ResMgr.openSection('../paths.xml')['Paths'].values()[1]
