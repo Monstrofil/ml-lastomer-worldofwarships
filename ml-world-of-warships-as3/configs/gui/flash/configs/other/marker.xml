@@ -1,0 +1,63 @@
+<block className="MagicMarkerBlock">		
+    <bind name="collectionDH" value="CC.camera; 'cameraCollection'"/>
+    <bind name="entityDH" value="'cameraEntity'; cameraCollection[0].id"/>
+    <bind name="watchDH" value="'camera'; ['cameraEntity.camera.evAltVisionChanged','cameraEntity.camera.evTacticalStateChanged']; cameraEntity.camera"/>
+    <bind name="controller" value="ML_Controllers.ML_MarkerInfoController"/>
+    
+    <bind name="collectionDH" value="CC.userPrefs; 'userPrefsCollection'"/>
+    <bind name="entityDH" value="'userPrefsEntity'; userPrefsCollection[0].id"/>
+    <bind name="watchDH" value="'userPrefs'; ['userPrefsEntity.userPrefs.evUserPrefsChanged']; userPrefsEntity.userPrefs.userPrefs"/>
+    
+    <bind name="watch" value=" 'markersEnabled'; (userPrefs.elementsGroupExpand.markersEnabled == null) ? true : userPrefs.elementsGroupExpand.markersEnabled "/>
+    
+    <!-- Ship fire icon -->
+    <block type="text">
+        <style>
+            <top value="-75"/>
+            <marginLeft value="-50%"/>
+            <fontFamily value="ML_WOTSymbol"/>
+            <textColor value="0xE28822"/>
+            <fontSize value="25px"/>
+            <dropShadowFilter value="1 90 0x08222a 0.7 2.0 2.0 1.0 2"/>
+        </style>
+        <bind name="visible" value="isFire"/>
+        <bind name="text" value="'Q'"/>
+    </block>
+    
+    <!-- statistics -->
+    <block>
+        <bind name="visible" value="!(camera.isTactical) &amp;&amp; markersEnabled"/>
+        <!-- 
+            camera.isTactical
+            camera.altVision
+        -->
+        <bind name="visible" value="statistics.real_data"/>
+        <style>
+            <position value="absolute"/>
+            <marginTop value="-50%"/>
+            <marginLeft value="-50%"/>
+            <flow value="horizontal"/>
+        </style>
+        <block type="text">
+            <style>
+                <textColor value="0xFF0404"/>
+                <fontSize value="12px"/>
+                <dropShadowFilter value="1 90 0x08222a 0.7 2.0 2.0 1.0 2"/>
+            </style>
+            <styleClass value="$TextDefaultBold"/>
+            <bind name="style" value="'textColor'; ('0x'+statistics.all_wins_color)"/>
+            <bind name="text" value="statistics.all_wins + '%'"/>
+            <bind name="scaleY" value="camera.altVision ? 1: 0"/>
+        </block>
+        <block type="text">
+            <style>
+                <marginLeft value="25"/>
+                <fontSize value="12px"/>
+                <dropShadowFilter value="1 90 0x08222a 0.7 2.0 2.0 1.0 2"/>
+            </style>
+            <styleClass value="$TextDefaultBold"/>
+            <bind name="style" value="'textColor'; ('0x'+statistics.all_rate_color)"/>
+            <bind name="text" value="statistics.all_rate"/>
+        </block>
+    </block>
+</block>

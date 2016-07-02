@@ -1,0 +1,26 @@
+<block className="XVMOwnShipDamageLog">
+    <!--
+        Own-ship-damage log.
+        
+        Local variables:
+        _hitlogOwnShipEnabled: boolean
+        damagedMeEntities: Array<Player>
+            
+        damagedMeEntities contains FIVE last players that damaged you during battle
+    -->
+    <bind name="appear" value="'addedToStage'; 0.6; 0; {alpha: 0}; {alpha: 1}"/>
+    <bind name="controller" value="ML_Controllers.ML_DamageController"/>
+    <bind name="visible" value="hitlogOwnShipEnabled"/>
+    <block>
+        <style>
+            <width value="220px"/>
+        </style>
+        <!--   -->
+        <bind name="repeat" value="damagedMeEntities;'SelfDamagedRow';{}"/>
+    </block>
+    <bind name="style" value="'marginTop'; (stageSize.y - 250) + 'px'"/>
+    <style>
+        <position value="absolute"/>
+        <marginLeft value="365px"/>
+    </style>
+</block>

@@ -1,0 +1,30 @@
+<block className="XVMFragsHeader">
+    <!--
+        Block with teamScore (at the top of the screen)
+        
+        Internal variables:
+        _fragsEnabled: is this block visible;
+    -->
+    <bind name="controller" value="lesta.dialogs.controllers.EntitySingletonController; 'gameInfo'"/>
+    <bind name="visible" value="_fragsEnabled"/>
+    <block type="text">
+        <bind name="class" value="'$TextHeaderLargeBold'"/>
+        <bind name="text" value="gameInfo.alliedFrags"/>
+    </block>
+    
+    <block type="text">
+        <bind name="class" value="'$TextHeaderLargeBold'"/>
+        <bind name="text" value="':'"/>
+    </block>
+    
+    <block type="text">
+        <bind name="class" value="'$TextHeaderLargeBold'"/>
+        <bind name="text" value="gameInfo.enemyFrags"/>
+    </block>
+    
+    <style>
+        <flow value="horizontal"/>
+        <top value="3px"/>
+    </style>
+    <styleClass value="$MiddleAligned"/>
+</block>

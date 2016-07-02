@@ -1,0 +1,23 @@
+<!-- 
+    Avaliable variables:
+    _clockEnabled: Boolean
+-->
+<block className="XVMClock"> 
+    <bind name="appear" value="'addedToStage'; 0.6; 0; {alpha: 0}; {alpha: 1}"/>
+    <bind name="visible" value="_clockEnabled"/>
+    <style>
+        <position value="absolute"/>
+        <left value="160px"/> <!-- x coordinate -->
+        <top value="0px"/> <!-- y coordinate -->
+    </style>
+    <block type="text">
+        <styleClass value="$TextDefaultBold"/>
+        <style>
+            <textAlign value="right"/>
+            <textColor value="0xEEEEEE"/> <!-- font color -->
+            <fontSize value="18"/> <!-- font size -->
+        </style>
+        <bind name="clock" value="'timeText'; 'hh:mm:ss'"/>
+        <bind name="pureText" value="'' + timeText"/>
+    </block>
+</block>

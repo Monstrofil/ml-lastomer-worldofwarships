@@ -1,0 +1,99 @@
+<block className="ML_Setting">
+    <bind name="visible" value="showSettingsBox"/>
+    <bind name="collectionDH" value="CC.userPrefs; 'userPrefsCollection'"/>
+    <bind name="entityDH" value="'userPrefsEntity'; userPrefsCollection[0].id"/>
+    <bind name="watchDH" value="'userPrefs'; ['userPrefsEntity.userPrefs.evUserPrefsChanged']; userPrefsEntity.userPrefs.userPrefs"/>
+    
+    <bind name="draggable" value="'SBDragZone'; 'IMPosition'; 'SB'"/>
+    
+    <bind name="watch" value="'SBPositionX';	(userPrefs.IMPositionX.SB == null)		? ((stageSize.x / 2) - 200) : 	userPrefs.IMPositionX.SB"/>
+    <bind name="watch" value="'SBPositionY';	(userPrefs.IMPositionY.SB == null)		? ((stageSize.y / 2) - 100) : 	userPrefs.IMPositionY.SB"/>
+    
+    <bind name="left" value="SBPositionX"/>
+    <bind name="top" value="SBPositionY"/>
+    
+    
+    <bind name="appear" value="'addedToStage'; 0.6; 0; {alpha: 0}; {alpha: 1}"/>
+    <style>
+        <position value="absolute"/>
+        <backgroundColor value="0x33001000"/>
+    </style>
+    
+    <bind name="instance" value="'DropShadow'; {}"/>
+    
+    <block>
+        <styleClass value="$FullsizeAbsolute"/>
+        <bind name="visible" value="true"/>
+        <block className="hint_panel" type="native">
+            <styleClass value="$FullsizeAbsolute"/>
+        </block>
+    </block>
+
+    <block> 
+        <style>
+            <marginBottom value="5px"/>
+            <marginTop value="5px"/>
+            <marginRight value="8px"/>
+            <marginLeft value="8px"/>
+        </style>
+
+        <block>
+            <block type="text">
+                <text value="IDS_MENU_SETTINGS"/>
+                <styleClass value="$TextDefault"/>
+                <style>
+                    <fontSize value="18"/>
+                </style>
+            </block>
+            
+            <block>
+                <style>
+                    <position value="absolute"/>
+                    <right value="5px"/>
+                    <marginTop value="5px"/>
+                </style>
+                <block className="button_close" type="native">
+                    <bind name="dispatch" value="'click'; 'switchShipIconsBox'"/>
+                </block>
+            </block>
+            
+            <style>
+                <width value="150px"/>
+            </style>
+            
+            <bind name="instance" value="'HorizontalDivider'; {}"/>
+            <params>
+                <param name="name" value="SBDragZone"/>
+            </params>
+        </block>
+        
+        
+        <block>
+            <bind name="instance" value="'CheckBox'; {switchProperty: hitlogEnabled, label: 'Show hitlog', _maxTfWidth: 250}"/>
+            <bind name="dispatch" value="'click'; 'switchHitlogEnabledBox'"/>
+        </block>
+        <block>
+            <bind name="instance" value="'CheckBox'; {switchProperty: hitlogOwnShipEnabled, label: 'Show damage log', _maxTfWidth: 250}"/>
+            <bind name="dispatch" value="'click'; 'switchHitlogOwnEnabledBox'"/>
+        </block>
+        <block>
+            <bind name="instance" value="'CheckBox'; {switchProperty: clockEnabled, label: 'Show clock', _maxTfWidth: 250}"/>
+            <bind name="dispatch" value="'click'; 'switchClockEnabledBox'"/>
+        </block>
+        <block>
+            <bind name="instance" value="'CheckBox'; {switchProperty: fragsEnabled, label: 'Frags counter', _maxTfWidth: 250}"/>
+            <bind name="dispatch" value="'click'; 'switchFragsEnabledBox'"/>
+        </block>
+        
+        <block>
+            <bind name="instance" value="'CheckBox'; {switchProperty: markersEnabled, label: 'Markers', _maxTfWidth: 250}"/>
+            <bind name="dispatch" value="'click'; 'switchMarkersEnabledBox'"/>
+        </block>
+        
+        <!--<block>-->
+            <!--<bind name="instance" value="'CheckBox'; {switchProperty: targetInfoEnabled, label: 'Show target info', _maxTfWidth: 250}"/>-->
+            <!--<bind name="dispatch" value="'click'; 'switchTargetInfoEnabledBox'"/>-->
+        <!--</block>				-->
+        <!-- end list of settings -->
+    </block>
+</block>

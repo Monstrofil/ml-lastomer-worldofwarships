@@ -1,0 +1,179 @@
+<!-- 
+    Variables:
+    _targetInfoEnabled: Boolean
+-->
+
+<block className="XVMCurrentTargetInfoPanel">
+    <bind name="controller" value="ML_Controllers.ML_CurrentTargetController"/>
+    <bind name="visible" value="target!=null &amp;&amp; _targetInfoEnabled"/>
+    
+    <bind name="collectionDH" value="CC.userPrefs; 'userPrefsCollection'"/>
+    <bind name="entityDH" value="'userPrefsEntity'; userPrefsCollection[0].id"/>
+    <bind name="watchDH" value="'userPrefs'; ['userPrefsEntity.userPrefs.evUserPrefsChanged']; userPrefsEntity.userPrefs.userPrefs"/>
+    
+    <bind name="draggable" value="'THDragZone'; 'IMPosition'; 'TH'"/>
+    
+    <bind name="watch" value="'THPositionX';	(userPrefs.IMPositionX.TH == null)		? ((stageSize.x / 2) + 100) : 	userPrefs.IMPositionX.TH"/>
+    <bind name="watch" value="'THPositionY';	(userPrefs.IMPositionY.TH == null)		? ((stageSize.y / 2) + 150) : 	userPrefs.IMPositionY.TH"/>
+    
+    <bind name="left" value="THPositionX"/>
+    <bind name="top" value="THPositionY"/>
+    
+    <bind name="instance" value="'DropShadow'; {}"/>
+    
+    <block className="XVMTargetHeader">
+        <bind name="rotation" value="target.worldYaw"/>
+        <block>
+            <block type="text">
+                <styleClass value="$TextDefault"/>
+                <bind name="text" value="target.worldYaw"/>
+                <style>
+                    <width value="110px"/>
+                    <fontSize value="18"/>
+                </style>
+            </block>
+
+            <block type="text">
+                <styleClass value="$TextDefault"/>
+                <styleClass value="$FontSizeLarge"/>
+                <bind name="text" value="target.shipRlevel"/>
+                
+                <style>
+                    <marginLeft value="10px"/>
+                    <width value="20px"/>
+                    <fontSize value="18"/>
+                </style>
+            </block>
+
+            <style>
+                <flow value="horizontal"/>
+                <marginLeft value="7px"/>
+                <marginTop value="5px"/>
+                <marginRight value="7px"/>
+            </style>
+        </block>
+        
+        <params>
+            <param name="name" value="THDragZone"/>
+        </params>
+        <bind name="instance" value="'HorizontalDivider'; {}"/>
+    </block>
+
+    <block>
+        <bind name="style"  value="'backgroundImage'; 'url:' + '../' +'ship_previews/' +target.shipShortName + '.png'"/>
+        <bind name="scaleX" value="0.65"/>
+        <bind name="scaleY" value="0.65"/>
+        
+        <styleClass value="$MiddleAligned"/>
+        
+        <style>
+            <height value="82px"/>
+            <width value="140"/>
+        </style>
+    </block>
+    
+        
+    <block>
+        <block type="text">
+            <styleClass value="$TextDefault"/>
+            <bind name="text" value="'IDS_ARTILLERY'"/>
+            <style>
+                <width value="100"/>
+            </style>
+        </block>
+        
+        <block type="text">
+            <styleClass value="$TextDefault"/>
+            <bind name="text" value="(target.shipParams.artillery_max_dist==null?'--':format(target.shipParams.artillery_max_dist, -1)) + ' km'"/>
+            
+            <style>
+                <textAlign value="right"/>
+                <width value="50"/>
+            </style>
+        </block>
+        <style>
+            <flow value="horizontal"/>
+        </style>
+    </block>
+    
+    <block>
+        <block type="text">
+            <styleClass value="$TextDefault"/>
+            <bind name="text" value="'IDS_RELOADTIME'"/>
+            <style>
+                <width value="100"/>
+            </style>
+        </block>
+        
+        <block type="text">
+            <styleClass value="$TextDefault"/>
+            <bind name="text" value="(target.shipParams.artillery_time_reload==null?'--':format(target.shipParams.artillery_time_reload, -1)) + ' s'"/>
+            
+            <style>
+                <textAlign value="right"/>
+                <width value="50"/>
+            </style>
+        </block>
+        <style>
+            <flow value="horizontal"/>
+        </style>
+    </block>
+    
+    <block>
+        <block type="text">
+            <styleClass value="$TextDefault"/>
+            <bind name="text" value="'IDS_TORPEDOES'"/>
+            <style>
+                <width value="100"/>
+            </style>
+        </block>
+        
+        <block type="text">
+            <styleClass value="$TextDefault"/>
+            <bind name="text" value="(target.shipParams.torpedoes_max_dist==null?'--':format(target.shipParams.torpedoes_max_dist, -1)) + ' km'"/>
+            
+            <style>
+                <textAlign value="right"/>
+                <width value="50"/>
+            </style>
+        </block>
+        <style>
+            <flow value="horizontal"/>
+        </style>
+    </block>
+    
+    <block>
+        <block type="text">
+            <styleClass value="$TextDefault"/>
+            <bind name="text" value="'IDS_RELOADTIME'"/>
+            <style>
+                <width value="120"/>
+            </style>
+        </block>
+        
+        <block type="text">
+            <styleClass value="$TextDefault"/>
+            <bind name="text" value="(target.shipParams.torpedoes_time_reload==null?'--':format(target.shipParams.torpedoes_time_reload, -1)) + ' s'"/>
+            
+            <style>
+                <textAlign value="right"/>
+                <width value="30"/>
+            </style>
+        </block>
+        <style>
+            <flow value="horizontal"/>
+        </style>
+    </block>
+    
+
+    <block type="text">
+        <styleClass value="$TextDefault"/>
+        <styleClass value="$FontSizeLarge"/>
+        <bind name="text" value="target.name"/>
+    </block>
+
+    <style>
+        <position value="absolute"/>
+        <backgroundColor value="0x20000000"/>
+    </style>
+</block>

@@ -22,11 +22,130 @@
 
 	
 <ui>	
-    {import css/*.xml}
-    
-    {import other/marker.xml}
-
-	{import blocks/clock.xml}
+	<block className="MagicMarkerBlock">		
+		<bind name="collectionDH" value="CC.camera; 'cameraCollection'"/>
+		<bind name="entityDH" value="'cameraEntity'; cameraCollection[0].id"/>
+		<bind name="watchDH" value="'camera'; ['cameraEntity.camera.evAltVisionChanged','cameraEntity.camera.evTacticalStateChanged']; cameraEntity.camera"/>
+		<bind name="controller" value="ML_Controllers.ML_MarkerInfoController"/>
+		
+		<bind name="collectionDH" value="CC.userPrefs; 'userPrefsCollection'"/>
+		<bind name="entityDH" value="'userPrefsEntity'; userPrefsCollection[0].id"/>
+		<bind name="watchDH" value="'userPrefs'; ['userPrefsEntity.userPrefs.evUserPrefsChanged']; userPrefsEntity.userPrefs.userPrefs"/>
+		
+		<bind name="watch" value=" 'markersEnabled'; (userPrefs.elementsGroupExpand.markersEnabled == null) ? true : userPrefs.elementsGroupExpand.markersEnabled "/>
+		
+		<!-- Ship fire icon -->
+		<block type="text">
+			<style>
+				<top value="-75"/>
+				<marginLeft value="-50%"/>
+				<fontFamily value="ML_WOTSymbol"/>
+				<textColor value="0xE28822"/>
+				<fontSize value="25px"/>
+				<dropShadowFilter value="1 90 0x08222a 0.7 2.0 2.0 1.0 2"/>
+			</style>
+			<bind name="visible" value="isFire"/>
+			<bind name="text" value="'Q'"/>
+		</block>
+		
+		<!-- statistics -->
+		<block>
+			<bind name="visible" value="!(camera.isTactical) &amp;&amp; markersEnabled"/>
+			<!-- 
+				camera.isTactical
+				camera.altVision
+			-->
+			<bind name="visible" value="statistics.real_data"/>
+			<style>
+				<position value="absolute"/>
+				<marginTop value="-50%"/>
+				<marginLeft value="-50%"/>
+				<flow value="horizontal"/>
+			</style>
+			<block type="text">
+				<style>
+					<textColor value="0xFF0404"/>
+					<fontSize value="12px"/>
+					<dropShadowFilter value="1 90 0x08222a 0.7 2.0 2.0 1.0 2"/>
+				</style>
+				<styleClass value="$TextDefaultBold"/>
+				<bind name="style" value="'textColor'; ('0x'+statistics.all_wins_color)"/>
+				<bind name="text" value="statistics.all_wins + '%'"/>
+				<bind name="scaleY" value="camera.altVision ? 1: 0"/>
+			</block>
+			<block type="text">
+				<style>
+					<marginLeft value="25"/>
+					<fontSize value="12px"/>
+					<dropShadowFilter value="1 90 0x08222a 0.7 2.0 2.0 1.0 2"/>
+				</style>
+				<styleClass value="$TextDefaultBold"/>
+				<bind name="style" value="'textColor'; ('0x'+statistics.all_rate_color)"/>
+				<bind name="text" value="statistics.all_rate"/>
+			</block>
+		</block>
+	</block>
+	
+	
+	<block className="HorizontalDivider">
+		<styleClass value="$PxHorizontalCorrection"/>
+		<style>
+			<width value="100%"/>
+			<height value="3px"/>
+		</style>
+		<block className="divider_h" type="native">
+			<styleClass value="$Fullsize"/>
+		</block>
+	</block>
+	
+	<block className="DropShadow">
+		<!--
+			Add shadow to any block:
+			<bind name="instance" value="'DropShadow'; {}"/>
+		-->
+		<styleClass value="$FullsizeAbsolute"/>
+		<styleClass value="$MouseDisable"/>
+		<block className="drop_shadow" type="native">
+			<styleClass value="$Fullsize"/>
+			<style>
+				<position value="absolute"/>
+				<marginTop value="-2px"/>
+				<marginRight value="-6px"/>
+				<marginBottom value="-10px"/>
+				<marginLeft value="-6px"/>
+			</style>
+		</block>
+	</block>
+	
+	<css name="$TextHeaderLargeBold">
+		<mouseChildren value="false"/>
+		<mouseEnabled value="false"/>
+		<fontFamily value="$WWSDefaultFontBold"/>
+		<fontSize value="21"/>
+		<dropShadowFilter value="1 90 0x08222a 0.5 2.0 2.0 1.0 2"/>
+		<selectable value="false"/>
+		<textColor value="0xEEEEEE"/>
+	</css>
+	
+	<block className="XVMClock"> 
+		<bind name="appear" value="'addedToStage'; 0.6; 0; {alpha: 0}; {alpha: 1}"/>
+		<bind name="visible" value="_clockEnabled"/>
+		<style>
+			<position value="absolute"/>
+			<left value="160px"/> <!-- x coordinate -->
+			<top value="0px"/> <!-- y coordinate -->
+		</style>
+		<block type="text">
+			<styleClass value="$TextDefaultBold"/>
+			<style>
+				<textAlign value="right"/>
+				<textColor value="0xEEEEEE"/> <!-- font color -->
+				<fontSize value="18"/> <!-- font size -->
+			</style>
+			<bind name="clock" value="'timeText'; 'hh:mm:ss'"/>
+			<bind name="pureText" value="'' + timeText"/>
+		</block>
+	</block>
 	
 	<block className="XVMFragsHeader">
 		<!--
@@ -369,7 +488,106 @@
 		</block>
 
 
-        {import blocks/settings.xml}
+        <!-- settings box -->
+        <block>
+			<bind name="visible" value="showSettingsBox"/>
+			<bind name="collectionDH" value="CC.userPrefs; 'userPrefsCollection'"/>
+			<bind name="entityDH" value="'userPrefsEntity'; userPrefsCollection[0].id"/>
+			<bind name="watchDH" value="'userPrefs'; ['userPrefsEntity.userPrefs.evUserPrefsChanged']; userPrefsEntity.userPrefs.userPrefs"/>
+			
+			<bind name="draggable" value="'SBDragZone'; 'IMPosition'; 'SB'"/>
+			
+			<bind name="watch" value="'SBPositionX';	(userPrefs.IMPositionX.SB == null)		? ((stageSize.x / 2) - 200) : 	userPrefs.IMPositionX.SB"/>
+			<bind name="watch" value="'SBPositionY';	(userPrefs.IMPositionY.SB == null)		? ((stageSize.y / 2) - 100) : 	userPrefs.IMPositionY.SB"/>
+			
+			<bind name="left" value="SBPositionX"/>
+			<bind name="top" value="SBPositionY"/>
+			
+			
+            <bind name="appear" value="'addedToStage'; 0.6; 0; {alpha: 0}; {alpha: 1}"/>
+            <style>
+                <position value="absolute"/>
+                <backgroundColor value="0x33001000"/>
+            </style>
+			
+			<bind name="instance" value="'DropShadow'; {}"/>
+			
+			<block>
+				<styleClass value="$FullsizeAbsolute"/>
+				<bind name="visible" value="true"/>
+				<block className="hint_panel" type="native">
+					<styleClass value="$FullsizeAbsolute"/>
+				</block>
+			</block>
+
+            <block> 
+                <style>
+                    <marginBottom value="5px"/>
+                    <marginTop value="5px"/>
+                    <marginRight value="8px"/>
+                    <marginLeft value="8px"/>
+                </style>
+
+				<block>
+					<block type="text">
+						<text value="IDS_MENU_SETTINGS"/>
+						<styleClass value="$TextDefault"/>
+						<style>
+							<fontSize value="18"/>
+						</style>
+					</block>
+					
+					<block>
+						<style>
+							<position value="absolute"/>
+							<right value="5px"/>
+							<marginTop value="5px"/>
+						</style>
+						<block className="button_close" type="native">
+							<bind name="dispatch" value="'click'; 'switchShipIconsBox'"/>
+						</block>
+					</block>
+					
+					<style>
+						<width value="150px"/>
+					</style>
+					
+					<bind name="instance" value="'HorizontalDivider'; {}"/>
+					<params>
+						<param name="name" value="SBDragZone"/>
+					</params>
+				</block>
+                <!-- list of settings -->
+                <block>
+                    <bind name="instance" value="'CheckBox'; {switchProperty: hitlogEnabled, label: 'Show hitlog', _maxTfWidth: 250}"/>
+                    <bind name="dispatch" value="'click'; 'switchHitlogEnabledBox'"/>
+                </block>
+                <block>
+                    <bind name="instance" value="'CheckBox'; {switchProperty: hitlogOwnShipEnabled, label: 'Show damage log', _maxTfWidth: 250}"/>
+                    <bind name="dispatch" value="'click'; 'switchHitlogOwnEnabledBox'"/>
+                </block>
+                <block>
+                    <bind name="instance" value="'CheckBox'; {switchProperty: clockEnabled, label: 'Show clock', _maxTfWidth: 250}"/>
+                    <bind name="dispatch" value="'click'; 'switchClockEnabledBox'"/>
+                </block>
+				<block>
+                    <bind name="instance" value="'CheckBox'; {switchProperty: fragsEnabled, label: 'Frags counter', _maxTfWidth: 250}"/>
+                    <bind name="dispatch" value="'click'; 'switchFragsEnabledBox'"/>
+                </block>
+				
+				<block>
+                    <bind name="instance" value="'CheckBox'; {switchProperty: markersEnabled, label: 'Markers', _maxTfWidth: 250}"/>
+                    <bind name="dispatch" value="'click'; 'switchMarkersEnabledBox'"/>
+                </block>
+				
+				<!--<block>-->
+                    <!--<bind name="instance" value="'CheckBox'; {switchProperty: targetInfoEnabled, label: 'Show target info', _maxTfWidth: 250}"/>-->
+                    <!--<bind name="dispatch" value="'click'; 'switchTargetInfoEnabledBox'"/>-->
+                <!--</block>				-->
+                <!-- end list of settings -->
+            </block>
+        </block>
+        <!-- end settings box -->
 
 	</block>
 	
