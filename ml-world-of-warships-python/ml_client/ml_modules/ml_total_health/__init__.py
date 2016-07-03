@@ -52,7 +52,7 @@ def new__init_vehicle(self):
     mTeamId = PlayersInfo.getSelfPlayerInfo().teamId
 
     gTeamsData.onVehicleChangedHealth(self.owner, self.health, vTeamId == mTeamId)
-Vehicle.Vehicle.__init__ = new__init_vehicle
+#Vehicle.Vehicle.__init__ = new__init_vehicle
 
 old_set_health = Vehicle.Vehicle.set_health
 def new_set_health(self, oldValue):
@@ -63,7 +63,12 @@ def new_set_health(self, oldValue):
     old_set_health(self, oldValue)
 Vehicle.Vehicle.set_health = new_set_health
 
-
 def onPreBattleStarted(*args, **params):
     gTeamsData.clear()
 Avatar.evEnterPreBattle += onPreBattleStarted()
+
+
+def onLeavePreBattle(*args, **params):
+    for player in PlayersInfo.iterPlayers():
+        gTeamsData.onVehicleChangedHealth(player.avatarId, player.maxHealth, player.teamId==PlayersInfo.getSelfPlayerInfo().teamId)
+Avatar.evLeavePreBattle += onLeavePreBattle
