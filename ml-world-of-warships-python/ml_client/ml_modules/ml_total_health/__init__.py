@@ -75,11 +75,15 @@ def new_set_health(self, oldValue):
     old_set_health(self, oldValue)
 Vehicle.Vehicle.set_health = new_set_health
 
-def onPreBattleStarted(*args, **params):
+def reInitAll():
+    print 'TOTAL HP: NEW BATTLE'
     gTeamsData.clear()
-Avatar.evEnterPreBattle += onPreBattleStarted()
+    for player in PlayersInfo.iterPlayers():
+        tmpHealth = Health(player.maxHealth, player.maxHealth)
+        gTeamsData.onVehicleChangedHealth(player.avatarId, tmpHealth, player.teamId==PlayersInfo.getSelfPlayerInfo().teamId)
+    gTeamsData.update()
 
 import BigWorld
 def onPreBattleLeave(*args, **params):
-    BigWorld.callback(5, gTeamsData.update)
-Avatar.evLeavePreBattle += onPreBattleLeave()
+    BigWorld.callback(5, reInitAll)
+Avatar.gPlayerAvatarEnterWorld += onPreBattleLeave()
