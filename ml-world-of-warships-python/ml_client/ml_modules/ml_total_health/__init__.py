@@ -59,7 +59,7 @@ gTeamsData = TeamsData()
 
 def onPlayersListUpdated(*args, **params):
     for player in PlayersInfo.iterPlayers():
-        tmpHealth = Health(player.maxHealth, player.maxHealth)
+        tmpHealth = Health(player.health, player.maxHealth)
         gTeamsData.onVehicleChangedHealth(player.avatarId, tmpHealth, player.teamId==PlayersInfo.getSelfPlayerInfo().teamId)
 PlayersInfo.gPlayersListUpdated += onPlayersListUpdated
 
