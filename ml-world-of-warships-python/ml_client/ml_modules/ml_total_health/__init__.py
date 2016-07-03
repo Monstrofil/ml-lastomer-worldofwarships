@@ -78,3 +78,8 @@ Vehicle.Vehicle.set_health = new_set_health
 def onPreBattleStarted(*args, **params):
     gTeamsData.clear()
 Avatar.evEnterPreBattle += onPreBattleStarted()
+
+import BigWorld
+def onPreBattleLeave(*args, **params):
+    BigWorld.callback(5, gTeamsData.update)
+Avatar.evLeavePreBattle += onPreBattleLeave()
