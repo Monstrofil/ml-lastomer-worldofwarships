@@ -58,9 +58,10 @@ class TeamsData(object):
 gTeamsData = TeamsData()
 
 def onPlayersListUpdated(*args, **params):
-    for player in PlayersInfo.iterPlayers():
-        tmpHealth = Health(player.health, player.maxHealth)
-        gTeamsData.onVehicleChangedHealth(player.avatarId, tmpHealth, player.teamId==PlayersInfo.getSelfPlayerInfo().teamId)
+    if not BWPersonality.uiManager._UIManager__mainContext.battle:
+        for player in PlayersInfo.iterPlayers():
+            tmpHealth = Health(player.maxHealth, player.maxHealth)
+            gTeamsData.onVehicleChangedHealth(player.avatarId, tmpHealth, player.teamId==PlayersInfo.getSelfPlayerInfo().teamId)
 PlayersInfo.gPlayersListUpdated += onPlayersListUpdated
 
 old_set_health = Vehicle.Vehicle.set_health
