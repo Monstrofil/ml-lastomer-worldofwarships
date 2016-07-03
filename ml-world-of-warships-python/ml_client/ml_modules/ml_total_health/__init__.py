@@ -24,8 +24,6 @@ class TeamsData(object):
 
     def onVehicleChangedHealth(self, avatarId, health, isAlly):
         storage = self.alliedVehicles if isAlly else self.enemyVehicles
-        old_alliesHealth = self.alliesHealth
-        old_enemiesHealth = self.enemiesHealth
 
         if avatarId in storage:
             if isAlly:
@@ -39,16 +37,16 @@ class TeamsData(object):
         else:
             self.enemiesHealth += storage[avatarId]
 
-        self.update((old_alliesHealth != self.alliesHealth) or (old_enemiesHealth != self.enemiesHealth))
+        self.update()
 
-    def update(self, flag):
-        if BWPersonality.uiManager._UIManager__mainContext.battle and flag:
+    def update(self):
+        if BWPersonality.uiManager._UIManager__mainContext.battle:
             BWPersonality.uiManager._UIManager__mainContext.battle.infoHolder.call("ML_onTeamsHpChanged", [self.alliesHealth, self.enemiesHealth])
 gTeamsData = TeamsData()
 
 def onPlayersListUpdated(*args, **params):
     for player in PlayersInfo.iterPlayers():
-        gTeamsData.onVehicleChangedHealth(player.avatarId, player.health, player.teamId==PlayersInfo.getSelfPlayerInfo().teamId)
+        gTeamsData.onVehicleChangedHealth(player.avatarId, player.maxHealth, player.teamId==PlayersInfo.getSelfPlayerInfo().teamId)
 PlayersInfo.gPlayersListUpdated += onPlayersListUpdated
 
 old_set_health = Vehicle.Vehicle.set_health
