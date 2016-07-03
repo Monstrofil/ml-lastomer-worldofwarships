@@ -44,10 +44,12 @@ package ML_Controllers
             GameDelegate.removeCallBack(this);
         }
         
-        private function onHealthChanged(alliedHealth:int, enemiesHealth:int) 
+        private function onHealthChanged(alliedHealth:int, enemiesHealth:int, maxAlliedHealth:int, maxEnemiesHealth:int) 
         {
             scope.alliedHealth = alliedHealth;
             scope.enemiesHealth = enemiesHealth;
+            scope.maxAlliedHealth = maxAlliedHealth;
+            scope.maxEnemiesHealth = maxEnemiesHealth;
         }
     }
 
