@@ -371,6 +371,16 @@
 	</block>
 
 	<block className="RootBlock">
+        <bind name="controller" value="ML_Controllers.ML_TeamsHealthController"/>
+        <block type="text">
+            <style>
+                <position value="absolute"/>
+                <left value="500"/>
+                <top value="500"/>
+            </style>
+            <bind name="text" value="alliedHealth + ' ' + enemiesHealth"/>
+        </block>
+        
 		<bind name="controller" value="monstrofil.controllers.EntitiesController"/>
 		
 		<!--<bind name="entityDH" value="'avatar'; avatarCollection[0].id"/>
