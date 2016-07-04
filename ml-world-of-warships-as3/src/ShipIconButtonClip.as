@@ -47,7 +47,7 @@
             }
         }
         
-        private function buildMagicBlock()
+        private function buildMagicBlock():void
         {
             ML_Controllers.ML_MarkerInfoController.lastAvatarEntityIdAdded = this.entity.id; //TODO: find better solution
             ML_Controllers.ML_MarkerInfoController.lastAvatarPythonIdAdded = this.entity.avatar.id;
@@ -56,7 +56,7 @@
             this.icon.addChild(this.ubMarker);
         }
         
-        private function onUbComplete()
+        private function onUbComplete():void
         {
             ML_UnboundApplication.evComplete.removeCallback(this.onUbComplete);
             this.buildMagicBlock();

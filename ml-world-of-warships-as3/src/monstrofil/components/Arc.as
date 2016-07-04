@@ -14,7 +14,7 @@
             this.lineWidth = lineWidth;            
         }
         
-        public function draw(angle_to, color=0xccFFcc) {
+        public function draw(angle_to:Number, color:uint=0xccFFcc):void {
             this.graphics.clear();
             this.graphics.lineStyle(this.lineWidth, color, 1, false, LineScaleMode.NONE);
             DrawingShapes.drawArc(this.graphics, this.x, this.y, this.radius, angle_to, -90);

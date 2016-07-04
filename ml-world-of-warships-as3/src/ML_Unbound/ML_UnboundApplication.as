@@ -58,6 +58,7 @@ package ML_Unbound
         private var rootBlock:String;
         private var blockFactory:CustomUbBlockFactory;
         private var mSizeStage:Point = new Point(0, 0);
+        public var ubGlobal:UbGlobalDefinitions = new UbGlobalDefinitions();
         
         public static var instance:ML_UnboundApplication;
         public static var evComplete:Invoker = new Invoker();
@@ -79,11 +80,9 @@ package ML_Unbound
             CapsLockManager.instance.init();
             GameDelegate.addCallBack(Calls.MainScene_updateStage, this, this.updateStage);
             super(null, false, 0, -1);
-            
-            instance = this;
         }
         
-        public function fini() {
+        public function fini():void {
            this.central.free();
            this.blockFactory.fini();
            this.xml = null;
@@ -103,8 +102,8 @@ package ML_Unbound
             this.makeBlocks(xml);
         }
         
-        public var ubGlobal:UbGlobalDefinitions = new UbGlobalDefinitions();
-        private function makeBlocks(xml:XML)
+        
+        private function makeBlocks(xml:XML):void
         {
             this.setupUnbound();
             super.beforeOpen({});
@@ -149,6 +148,7 @@ package ML_Unbound
             
             this.central.onEvent("onBecomeTop", null, UbScope.EVENT_DIRECTION_DOWN);
             
+            instance = this;
             evComplete.invoke();
         }
         public function makeRootBlock(id:String):UbRootBlock {
@@ -281,10 +281,6 @@ package ML_Unbound
                 return arg1 in arg2;
             }
             return false;
-        }
-        
-        function fini() {
-            
         }
 
     }

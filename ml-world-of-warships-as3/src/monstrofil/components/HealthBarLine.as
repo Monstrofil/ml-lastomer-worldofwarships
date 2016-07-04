@@ -20,7 +20,7 @@
             return hex;
         }
 
-        public function draw(currentHp: int, maxHp: int, maxWidth: int, maxHeight: int)
+        public function draw(currentHp: int, maxHp: int, maxWidth: int, maxHeight: int):void
         {
             if(maxHp == 0)
                 maxHp = currentHp + 1;
@@ -33,7 +33,7 @@
             var g:Graphics = this.graphics;
             g.clear();
 
-            var pers = currentHp * 100 / maxHp;
+            var pers:int = currentHp * 100 / maxHp;
             var color:uint = RGBToHex(0,0,0);
             if (pers > 0)
             {

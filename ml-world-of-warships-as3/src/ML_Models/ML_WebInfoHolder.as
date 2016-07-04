@@ -22,20 +22,18 @@ package ML_Models
             }
             
             this.dummyDataObject.realData = false;
-            GameInfoHolder.instance.addCallback(this, GameInfoHolder.LIST_PLAYERS, function(...rest) {
+            GameInfoHolder.instance.addCallback(this, GameInfoHolder.LIST_PLAYERS, function(...rest):void {
                 for each(var player:Player in GameInfoHolder.instance.listPlayers) {
                     GameDelegate.addCallBack("updateWebData[" + player.name + "]", this, this.updateWebInfo);
                 }
             });
         }
         
-        public function getStatisticsObjectIfExists(playerName:String) {
-            Cc.log(playerName);
-            Cc.log(this.pythonData);
+        public function getStatisticsObjectIfExists(playerName:String):Object {
             return this.pythonData[playerName] || this.dummyDataObject;
         }
         
-        private function updateWebInfo(arg1:Object) {
+        private function updateWebInfo(arg1:Object):void {
             Cc.log("updateWebInfo[" + arg1.name + "]");
             arg1['real_data'] = true;
             if (this.pythonData[arg1.name] == null) {

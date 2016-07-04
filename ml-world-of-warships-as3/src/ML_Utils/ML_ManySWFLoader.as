@@ -15,7 +15,7 @@ package ML_Utils
             
         }
         
-        public function load(arg1:Array) {
+        public function load(arg1:Array):void {
             this._files = arg1;
             this.loadNext();
         }

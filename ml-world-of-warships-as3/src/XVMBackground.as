@@ -57,6 +57,7 @@ package
         }
         
         public function onRemovedFromStage(e:Event):void {
+
             parent.removeChild(xvm);
         }
         

@@ -37,7 +37,7 @@
             }
         }
         
-        private var setPrecision:Function = function(number:Number, precision:int) {
+        private var setPrecision:Function = function(number:Number, precision:int):Number {
              precision = Math.pow(10, precision);
              return Math.round(number * precision)/precision;
         }

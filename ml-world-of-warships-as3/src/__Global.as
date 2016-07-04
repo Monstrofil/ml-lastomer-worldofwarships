@@ -10,7 +10,6 @@ package
     import ML_Controllers.ML_CurrentTargetController;
     import ML_Controllers.ML_DamageController;
     import ML_Controllers.ML_MarkerInfoController;
-    import ML_Controllers.ML_TeamsHealthController;
     import ML_Models.ML_WebInfoHolder;
     import ML_Unbound.ML_UnboundApplication;
     import ML_Utils.ML_ManySWFLoader;
@@ -68,7 +67,6 @@ package
         public var _ML_Controllers_ML_CurrentTargetController:ML_Controllers.ML_CurrentTargetController;
         public var _ML_Controllers_ML_DamageController:ML_Controllers.ML_DamageController;
         public var _ML_Controllers_ML_MarkerInfoController:ML_Controllers.ML_MarkerInfoController;
-        public var _ML_Controllers_ML_TeamsHealthController:ML_Controllers.ML_TeamsHealthController;
         public var _ML_Models_ML_WebInfoHolder:ML_Models.ML_WebInfoHolder;
         public var _ML_Unbound_ML_UnboundApplication:ML_Unbound.ML_UnboundApplication;
         public var _ML_Utils_ML_ManySWFLoader:ML_Utils.ML_ManySWFLoader;

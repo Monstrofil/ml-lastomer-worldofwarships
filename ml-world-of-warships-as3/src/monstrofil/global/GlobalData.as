@@ -22,7 +22,7 @@
         }
         
         public function get shadowDefault():DropShadowFilter {
-            var _shadowDefault = new  DropShadowFilter();
+            var _shadowDefault:DropShadowFilter = new DropShadowFilter();
             _shadowDefault.alpha = 0.8;
             _shadowDefault.color = 0x101010;
             _shadowDefault.distance = 0;
@@ -31,7 +31,7 @@
         }
         
         public function get shadowDefaultEars():DropShadowFilter{
-            var _shadowDefault = new  DropShadowFilter();
+            var _shadowDefault:DropShadowFilter = new DropShadowFilter();
             _shadowDefault.alpha = 0.6;
             _shadowDefault.color = 0x101010;
             _shadowDefault.distance = 0;
@@ -42,7 +42,7 @@
         }
         
         public function get glowDefault():GlowFilter{
-            var _glowFilterDefault = new GlowFilter();
+            var _glowFilterDefault:GlowFilter = new GlowFilter();
             _glowFilterDefault.color = 0x101010;
             _glowFilterDefault.blurX = 3;
             _glowFilterDefault.blurY = 3;
@@ -56,7 +56,7 @@
         }
         
         public function get textFormatDefault():TextFormat {
-            var _textFormatDefault = new TextFormat("$WWSDefaultFont");
+            var _textFormatDefault:TextFormat = new TextFormat("$WWSDefaultFont");
             _textFormatDefault.size = 10;
             _textFormatDefault.color = this._textColorDefault;
             
@@ -64,14 +64,13 @@
         }
         
         public function get inactiveColorTransformDefault():ColorTransform {
-            var _inactiveColorTransform = new ColorTransform();
+            var _inactiveColorTransform:ColorTransform = new ColorTransform();
             _inactiveColorTransform.color = this._inactiveColorDefault;
             return _inactiveColorTransform;
         }
         
         public function get activeColorTransformDefault():ColorTransform {
-            var activeColorTransform = new ColorTransform();
-            return activeColorTransform;
+            return new ColorTransform();
         }
         
         internal var _textColorDefault:uint = 0xF8F8F8;

@@ -12,7 +12,7 @@
             super(x, y, radius, w);
         }
         
-        public function draw_bar(health, maxHealth, color = 0xccFFcc)
+        public function draw_bar(health:Number, maxHealth:Number, color:uint = 0xccFFcc):void
         {
             if (health != this.last_hp){
                 this.last_hp = health;
@@ -23,8 +23,8 @@
             
             if (health * maxHealth != 0)
             {
-                var angle_from = -90;
-                var angle_to = 360.0 * health / maxHealth;
+                var angle_from:Number = -90;
+                var angle_to:Number = 360.0 * health / maxHealth;
                 
                 super.draw(angle_to, color);
             }

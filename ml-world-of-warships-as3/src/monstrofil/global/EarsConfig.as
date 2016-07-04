@@ -31,7 +31,7 @@ package monstrofil.global
         public var needReload:Boolean = false;
         public var xml:XML = new XML();
         
-        public function loadConfig(){
+        public function loadConfig():void {
             var myTextLoader:URLLoader = new URLLoader();
             myTextLoader.addEventListener(Event.COMPLETE, this.onLoaded);
             myTextLoader.load(new URLRequest(this.xmlFileName));

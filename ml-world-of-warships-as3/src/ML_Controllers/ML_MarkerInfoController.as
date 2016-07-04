@@ -15,8 +15,8 @@ package ML_Controllers
      */
     public class ML_MarkerInfoController extends UbController 
     {
-        public static var lastAvatarEntityIdAdded = 0;
-        public static var lastAvatarPythonIdAdded = 0;
+        public static var lastAvatarEntityIdAdded:int = 0;
+        public static var lastAvatarPythonIdAdded:int = 0;
         
         private var avatarName:String = "";
         public function ML_MarkerInfoController() 
