@@ -12,6 +12,16 @@ i18n = sys.modules['ml_tools'].ClientModules.i18n
 import ml_modules.xvm_statistics.WebDataHolder
 g_webDataHolder = sys.modules['ml_modules'].xvm_statistics.WebDataHolder.g_webDataHolder
 
+old_call = BWPersonality.uiManager._UIManager__mainContext.flash.__class__.call
+def new_call(*args, **params):
+    name = args[1]
+    if name == "FlagList.addMessage": #in order not to send original message
+        return
+    if name == "MLFlagList.addMessage":
+        args = list(args)
+        args[1] = "FlagList.addMessage"
+    old_call(*args, **params)
+BWPersonality.uiManager._UIManager__mainContext.flash.__class__.call = new_call
 
 @overrideMethod(VehicleStateController, '_VehicleStateController__onVehicleDeath')
 def new_VehicleStateController__onVehicleDeath(base, self, victimVehicleId, shooterVehicleId):
@@ -46,11 +56,6 @@ def new_VehicleStateController__onVehicleDeath(base, self, victimVehicleId, shoo
     message = i18n._gTranslator.translate("IDS_INFO_KILLED") % (shooterWebinfoFullName + " (%s)"%shooterShip,
                                                                 victimWebinfoFullName + " (%s)"%victimShip)
 
-    # def dummy(*args, **params):
-    #     pass
-    # tmpCall = self.updateFlashCollection
-    # self.updateFlashCollection = dummy
-    # base(self, victimVehicleId, shooterVehicleId)
-    # self.updateFlashCollection = tmpCall
+    self.main.flash.call("MLFlagList.addMessage", [message, color])
 
-    BWPersonality.uiManager._UIManager__mainContext.battle.infoHolder.call("FlagList.addMessage", [message, color])
+    base(self, victimVehicleId, shooterVehicleId) #in order to play sound "Ship Destroyed!11"
