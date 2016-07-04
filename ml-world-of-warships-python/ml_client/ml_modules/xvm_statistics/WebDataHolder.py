@@ -118,8 +118,6 @@ class WebDataHolder(object):
 
             info.real_data = info.all_battles_count > 1
 
-
-            print info.real_data, "updateWebData[%s]"%info.name
             BWPersonality.uiManager._UIManager__mainContext.battle.infoHolder.call("updateWebData[%s]"%info.name, [info])
             BWPersonality.uiManager._UIManager__mainContext.battle.infoHolder.call("updateWebDataMarker[%s]"%info.name, [info])
 
@@ -131,7 +129,7 @@ class WebDataHolder(object):
             player = g_webDataHolder.playersWebData.values()[i]
             def clan_loaded_callback():
                 BWPersonality.uiManager._UIManager__mainContext.battle.infoHolder.call("updateWebData[%s]"%player.name, [player])
-                BWPersonality.uiManager._UIManager__mainContext.battle.infoHolder.call("updateWebDataEars[%s]"%player.name, [player])
+                BWPersonality.uiManager._UIManager__mainContext.battle.infoHolder.call("updateWebDataMarker[%s]"%player.name, [player])
                 print player.real_data, "updateWebData[%s]"%player.name, 'clan_loaded_callback', player.name
                 force_update_clans(i + 1)
 
