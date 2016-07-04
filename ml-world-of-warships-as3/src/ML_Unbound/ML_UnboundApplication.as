@@ -83,6 +83,12 @@ package ML_Unbound
             instance = this;
         }
         
+        public function fini() {
+           this.central.free();
+           this.blockFactory.fini();
+           this.xml = null;
+        }
+        
         private function updateStage(arg1:Number, arg2:Number):void
         {
             this.mSizeStage.x = arg1;

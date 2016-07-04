@@ -53,6 +53,11 @@ package ML_Controllers
             
             scope.copyDataFrom(this.damageInfo);
         }
+        
+        public override function free():void {
+            this.damageInfo = null;
+            super.free();
+        }
     }
 }
 import lesta.structs.Player;
