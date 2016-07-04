@@ -30,6 +30,7 @@ package ML_Controllers
             super.init(arg1);            
             scope.avatarId = lastAvatarEntityIdAdded;
             scope.avatarPythonId = lastAvatarPythonIdAdded;
+            scope.isTorpedoShoot = false;
             scope.isFire = false;
             
             var player:Player = GameInfoHolder.instance.mapPlayers[lastAvatarPythonIdAdded];
@@ -42,10 +43,15 @@ package ML_Controllers
             
             scope.statistics = statistics;
             GameDelegate.addCallBack("setFireStateMarker[" + lastAvatarPythonIdAdded + "]", this, this.setFireStateMarker);
+            GameDelegate.addCallBack("setShootTorpedo[" + lastAvatarPythonIdAdded + "]", this, this.setFireStateMarker);
         }
         
         private function setFireStateMarker(arg1:Boolean):void{
             scope.isFire = arg1;
+        }
+        
+        private function setTorpedoStateMarker(arg1:Boolean):void{
+            scope.isTorpedoShoot = arg1;
         }
         
         private function onHolderChanged(playerName:String):void {

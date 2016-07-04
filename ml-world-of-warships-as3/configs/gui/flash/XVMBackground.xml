@@ -35,27 +35,44 @@
 		<bind name="watch" value=" 'markersEnabled'; (userPrefs.elementsGroupExpand.markersEnabled == null) ? true : userPrefs.elementsGroupExpand.markersEnabled "/>
 		
 		<!-- Ship fire icon -->
-		<block type="text">
-			<style>
-				<top value="-75"/>
-				<marginLeft value="-50%"/>
-				<fontFamily value="ML_WOTSymbol"/>
-				<textColor value="0xE28822"/>
-				<fontSize value="25px"/>
-				<dropShadowFilter value="1 90 0x08222a 0.7 2.0 2.0 1.0 2"/>
-			</style>
-			<bind name="visible" value="isFire"/>
-			<bind name="text" value="'Q'"/>
-		</block>
+        <block>
+            <block type="text">
+                <style>
+                    <top value="-75"/>
+                    <textColor value="0xE28822"/>
+                    <fontSize value="25px"/>
+                    <dropShadowFilter value="1 90 0x08222a 0.7 2.0 2.0 1.0 2"/>
+                </style>
+                <bind name="visible" value="isFire"/>
+                <bind name="text" value="'Q'"/>
+            </block>
+            
+            <block type="text">
+                <style>
+                    <fontFamily value="ML_WOTSymbol"/>
+                    <textColor value="0xE28822"/>
+                    <fontSize value="25px"/>
+                    <dropShadowFilter value="1 90 0x08222a 0.7 2.0 2.0 1.0 2"/>
+                </style>
+                <bind name="visible" value="isTorpedoShoot"/>
+                <bind name="text" value="'J'"/>
+            </block>
+            
+            
+            <style>
+                <top value="-75"/>
+                <marginLeft value="-50%"/>
+                <flow value="horizontal"/>
+            </style>
+        </block>
 		
 		<!-- statistics -->
 		<block>
-			<bind name="visible" value="!(camera.isTactical) &amp;&amp; markersEnabled"/>
+			<bind name="visible" value="!(camera.isTactical) &amp;&amp; markersEnabled &amp;&amp; statistics.real_data"/>
 			<!-- 
 				camera.isTactical
 				camera.altVision
 			-->
-			<bind name="visible" value="statistics.real_data"/>
 			<style>
 				<position value="absolute"/>
 				<marginTop value="-50%"/>
