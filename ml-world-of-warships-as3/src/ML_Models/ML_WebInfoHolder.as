@@ -34,7 +34,6 @@ package ML_Models
         
         private function updateWebInfo(arg1:Object):void {
             Cc.log("updateWebDataMarker[" + arg1.name + "]", arg1);
-            arg1['real_data'] = true;
             if (this.pythonData[arg1.name] == null) {
                 this.pythonData[arg1.name] = arg1;
             }
