@@ -34,6 +34,8 @@ package ML_Controllers
         private function onTotalDamageChanged(enemyDamage:int, allyDamage:int):void {
             this.damageInfo.totalDamage = enemyDamage;
             this.damageInfo.allyDamage  = allyDamage;
+            
+            scope.copyDataFrom(this.damageInfo);
         }
         
         private function onVehicleDamagedByMe(damage:int, avatarId:int, ammoType:String, shoterData:String):void {
