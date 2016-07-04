@@ -25,8 +25,8 @@ package ML_Models
             GameInfoHolder.instance.addCallback(this, "listPlayers", function(...rest):void {
                 trace("GameInfoHolder.instance.addCallback");
                 for each(var player:Player in GameInfoHolder.instance.listPlayers) {
-                    trace("updateWebData[" + player.name + "]");
-                    GameDelegate.addCallBack("updateWebData[" + player.name + "]", this, this.updateWebInfo);
+                    trace("updateWebDataMarker[" + player.name + "]");
+                    GameDelegate.addCallBack("updateWebDataMarker[" + player.name + "]", this, this.updateWebInfo);
                 }
             });
         }
@@ -36,7 +36,8 @@ package ML_Models
         }
         
         private function updateWebInfo(arg1:Object):void {
-            Cc.log("updateWebInfo[" + arg1.name + "]");
+            trace(arg1, "updateWebDataMarkerWebIndo");
+            Cc.log("updateWebDataMarker[" + arg1.name + "]", arg1);
             arg1['real_data'] = true;
             if (this.pythonData[arg1.name] == null) {
                 this.pythonData[arg1.name] = arg1;

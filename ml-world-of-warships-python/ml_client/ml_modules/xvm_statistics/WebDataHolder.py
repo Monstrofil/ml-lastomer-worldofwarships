@@ -121,6 +121,7 @@ class WebDataHolder(object):
 
             print info.real_data, "updateWebData[%s]"%info.name
             BWPersonality.uiManager._UIManager__mainContext.battle.infoHolder.call("updateWebData[%s]"%info.name, [info])
+            BWPersonality.uiManager._UIManager__mainContext.battle.infoHolder.call("updateWebDataMarker[%s]"%info.name, [info])
 
             g_webDataHolder.playersWebData[info.name] = info
 
