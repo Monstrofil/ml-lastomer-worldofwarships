@@ -43,7 +43,7 @@ package ML_Controllers
             
             scope.statistics = statistics;
             GameDelegate.addCallBack("setFireStateMarker[" + lastAvatarPythonIdAdded + "]", this, this.setFireStateMarker);
-            GameDelegate.addCallBack("setShootTorpedo[" + lastAvatarPythonIdAdded + "]", this, this.setFireStateMarker);
+            GameDelegate.addCallBack("setShootTorpedo[" + lastAvatarPythonIdAdded + "]", this, this.setTorpedoStateMarker);
         }
         
         private function setFireStateMarker(arg1:Boolean):void{

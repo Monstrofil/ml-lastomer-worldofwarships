@@ -38,7 +38,7 @@
         <block>
             <block type="text">
                 <style>
-                    <top value="-75"/>
+                    <fontFamily value="ML_WOTSymbol"/>
                     <textColor value="0xE28822"/>
                     <fontSize value="25px"/>
                     <dropShadowFilter value="1 90 0x08222a 0.7 2.0 2.0 1.0 2"/>
