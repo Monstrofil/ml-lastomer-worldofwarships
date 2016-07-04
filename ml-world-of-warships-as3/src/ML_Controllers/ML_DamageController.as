@@ -28,6 +28,12 @@ package ML_Controllers
             
             GameDelegate.addCallBack("onVehicleDamagedByMe", this, this.onVehicleDamagedByMe);
             GameDelegate.addCallBack("onMeDamagedByVehicle", this, this.onMeDamagedByVehicle);
+            GameDelegate.addCallBack("Achievement.totalDamage", this, this.onTotalDamageChanged);
+        }
+        
+        private function onTotalDamageChanged(enemyDamage:int, allyDamage:int):void {
+            this.damageInfo.totalDamage = enemyDamage;
+            this.damageInfo.allyDamage  = allyDamage;
         }
         
         private function onVehicleDamagedByMe(damage:int, avatarId:int, ammoType:String, shoterData:String):void {
@@ -51,6 +57,7 @@ import lesta.structs.Player;
 
 class OwnDamageInfo extends Object {
     public var totalDamage:int = 0;
+    public var allyDamage:int = 0;
     public var damagedEntities:Array = [];
     public var damagedMeEntities:Array = [];
     public function OwnDamageInfo() {
@@ -58,7 +65,6 @@ class OwnDamageInfo extends Object {
     }
     
     public function onVehicleDamaged(damage:int, player:Player, ammoType:String, shoterData:String):void {
-        this.totalDamage += damage;
         if (this.damagedEntities.length > 0 && (this.damagedEntities[0].player.name == player.name)) {
             this.damagedEntities[0].damage += damage;
             this.damagedEntities[0].last = damage;
