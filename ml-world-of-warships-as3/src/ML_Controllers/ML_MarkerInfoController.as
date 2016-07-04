@@ -55,6 +55,7 @@ package ML_Controllers
         }
         
         private function onHolderChanged(playerName:String):void {
+            trace("if (playerName == this.avatarName) {");
             if (playerName == this.avatarName) {
                 var statistics:Object = ML_Models.ML_WebInfoHolder.instance.getStatisticsObjectIfExists(this.avatarName);
                 ML_Models.ML_WebInfoHolder.instance.evChanged.removeCallback(this.onHolderChanged);
