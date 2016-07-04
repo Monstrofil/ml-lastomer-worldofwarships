@@ -37,7 +37,8 @@ package ML_Controllers
             
             this.avatarName = player.name;
             var statistics:Object = ML_Models.ML_WebInfoHolder.instance.getStatisticsObjectIfExists(this.avatarName);
-            if (!statistics.realData) {
+            Cc.log(statistics.real_data, this.avatarName);
+            if (!statistics.real_data) {
                 ML_Models.ML_WebInfoHolder.instance.evChanged.addCallback(this.onHolderChanged);
             }
             
@@ -57,8 +58,11 @@ package ML_Controllers
         private function onHolderChanged(playerName:String):void {
             if (playerName == this.avatarName) {
                 var statistics:Object = ML_Models.ML_WebInfoHolder.instance.getStatisticsObjectIfExists(this.avatarName);
+                Cc.log("onHolderChanged", statistics.real_data, this.avatarName);
                 ML_Models.ML_WebInfoHolder.instance.evChanged.removeCallback(this.onHolderChanged);
                 scope.statistics = statistics;
+                
+                updateInScope("statistics");
             }
         }
         

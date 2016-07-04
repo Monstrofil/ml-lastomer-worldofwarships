@@ -20,7 +20,7 @@ package ML_Models
             {
                 throw new Error("Singleton can only be accessed through Singleton.instance");
             }
-            this.dummyDataObject.realData = false;
+            this.dummyDataObject.real_data = false;
             GameInfoHolder.instance.addCallback(this, "listPlayers", function(...rest):void {
                 for each(var player:Player in GameInfoHolder.instance.listPlayers) {
                     GameDelegate.addCallBack("updateWebDataMarker[" + player.name + "]", this, this.updateWebInfo);
