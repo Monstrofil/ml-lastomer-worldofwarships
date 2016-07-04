@@ -20,10 +20,12 @@ package ML_Models
             {
                 throw new Error("Singleton can only be accessed through Singleton.instance");
             }
-            
+            trace("ML_WebInfoHolder");
             this.dummyDataObject.realData = false;
-            GameInfoHolder.instance.addCallback(this, GameInfoHolder.LIST_PLAYERS, function(...rest):void {
+            GameInfoHolder.instance.addCallback(this, "listPlayers", function(...rest):void {
+                trace("GameInfoHolder.instance.addCallback");
                 for each(var player:Player in GameInfoHolder.instance.listPlayers) {
+                    trace("updateWebData[" + player.name + "]");
                     GameDelegate.addCallBack("updateWebData[" + player.name + "]", this, this.updateWebInfo);
                 }
             });
@@ -44,6 +46,7 @@ package ML_Models
                     this.pythonData[arg1.name][id] = arg1[id];
                 }
             }
+            trace("this.evChanged.invoke([arg1.name]);");
             this.evChanged.invoke([arg1.name]);
         }
 
