@@ -49,7 +49,7 @@
             
             <block type="text">
                 <style>
-                    <fontFamily value="ML_WOTSymbol"/>
+                    <fontFamily value="ML_WOWSSymbol"/>
                     <textColor value="0xE28822"/>
                     <fontSize value="25px"/>
                     <dropShadowFilter value="1 90 0x08222a 0.7 2.0 2.0 1.0 2"/>
@@ -64,6 +64,7 @@
                 <marginLeft value="-50%"/>
                 <flow value="horizontal"/>
             </style>
+            <bind name="visible" value="!(camera.isTactical)"/>
         </block>
 		
 		<!-- statistics -->
