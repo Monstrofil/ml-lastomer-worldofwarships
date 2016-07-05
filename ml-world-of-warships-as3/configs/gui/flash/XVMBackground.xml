@@ -58,7 +58,6 @@
                 <bind name="text" value="'J'"/>
             </block>
             
-            
             <style>
                 <top value="-75"/>
                 <marginLeft value="-50%"/>

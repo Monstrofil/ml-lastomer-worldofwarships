@@ -4,7 +4,7 @@
   <output>
     <movie outputType="Application" />
     <movie input="" />
-    <movie path="D:\Games\World of WarshipsSF\res_mods\0.5.5.1\gui\flash\XVMBackground.swf" />
+    <movie path="D:\Games\WOWS_PublicTestPure\res_mods\0.5.8\gui\flash\XVMBackground.swf" />
     <movie fps="30" />
     <movie width="800" />
     <movie height="600" />
@@ -83,7 +83,7 @@
   <!-- Executed before build -->
   <preBuildCommand>"D:\workspace\python27\python.exe" "$(ProjectDir)/prebuild.py" "$(ProjectDir)/src/"</preBuildCommand>
   <!-- Executed after build -->
-  <postBuildCommand alwaysRun="False">"D:\Games\World of WarshipsSF\WorldOfWarships550.exe" "D:\Games\World of WarshipsSF\WW.wowsreplay"</postBuildCommand>
+  <postBuildCommand alwaysRun="False">"D:\Monstrofil\SignSWF\SignSWF.bat" D:\Games\WOWS_PublicTestPure\res_mods\0.5.8\gui\flash\</postBuildCommand>
   <!-- Other project options -->
   <options>
     <option showHiddenPaths="False" />
