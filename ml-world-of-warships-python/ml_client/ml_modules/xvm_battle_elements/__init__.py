@@ -8,7 +8,7 @@ try:
     f = open('../' + resModPath.asString + '/gui/battle_elements.xml', 'rb')
     f.close()
 except:
-    f = open('../' + resModPath.asString + '/scripts/client/mods/battle_elements.xml', 'rb')
+    f = open('../' + resModPath.asString + '/scripts/client/ml_configs/battle_elements.xml', 'rb')
     d = open('../' + resModPath.asString + '/gui/battle_elements.xml', 'wb')
     d.write(f.read())
     d.close()
