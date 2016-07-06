@@ -8,13 +8,8 @@
 		\tools\wows_ui_tools\auto_draw_perf_test\generate_elements_list.py
 -->
   <elementList>
-	<element name="XVMBackground" class="XVMBackground" url="XVMBackground.swf"/>
     <element name="fireScreenEffect" class="FullscreenFireEffectClip" url="fullscreen_effects.swf"/>
     <element name="placeHolderGuidesManager" class="flash.display.MovieClip" url="guide.swf"/>
-    <element name="markersContainer" class="flash.display.Sprite" url="gui_slots.swf">
-      <properties x='0' y='0'/>
-	  <properties hitTest = "true"/>
-    </element>
     <element name="weaponsPanel" class="WeaponsPanelClip" url="weapons_panel.swf" autoPerfTestGroup="weapons">
       <properties hitTest = "true"/>
     </element>
@@ -135,7 +130,11 @@
   <!--  <element name="helpScreen" class="HelpScreenClip" url="help_panel.swf" autoPerfTest="false">
     <properties hitTest='true' />
   </element> -->
-  
+  <element name="XVMBackground" class="XVMBackground" url="XVMBackground.swf"/>
+  <element name="markersContainer" class="flash.display.Sprite" url="gui_slots.swf">
+      <properties x='0' y='0'/>
+      <properties hitTest = "true"/>     
+  </element>
   </elementList>
   <controllers>
 	<controller class="XVMDatahubController" clips="XVMBackground"/>

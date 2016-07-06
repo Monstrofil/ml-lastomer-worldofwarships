@@ -81,7 +81,12 @@
     <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>"D:\workspace\python27\python.exe" "$(ProjectDir)/prebuild.py" "$(ProjectDir)/src/"</preBuildCommand>
+  <preBuildCommand>"D:\workspace\python27\python.exe" "$(ProjectDir)/prebuild.py" "$(ProjectDir)/src/"
+python "D:\_develop\xml2as\xml2as.py.pyc" -i configs/gui/unbound/dock.xml -n MLDock -f C:\Users\shish\AppData\Local\FlashDevelop\Apps\flexsdk\4.6.0
+rm MLDock.as
+mv MLDock.swf D:\Games\WOWS_PublicTestPure\res_mods\0.5.8\gui\flash\MLDock.swf
+
+xcopy /s /Y configs "D:\Games/WOWS_PublicTestPure/res_mods/0.5.8"</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False">"D:\Monstrofil\SignSWF\SignSWF.bat" D:\Games\WOWS_PublicTestPure\res_mods\0.5.8\gui\flash\</postBuildCommand>
   <!-- Other project options -->

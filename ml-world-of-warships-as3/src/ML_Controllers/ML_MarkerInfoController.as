@@ -2,6 +2,7 @@ package ML_Controllers
 {
     import com.junkbyte.console.Cc;
     import lesta.components.Plane;
+    import lesta.constants.PlayerRelation;
     import lesta.data.GameDelegate;
     import lesta.structs.Player;
     import lesta.unbound.core.UbController;
@@ -19,6 +20,7 @@ package ML_Controllers
         public static var lastAvatarPythonIdAdded:int = 0;
         
         private var avatarName:String = "";
+        private var player:Player = null;
         public function ML_MarkerInfoController() 
         {
             super();
@@ -33,10 +35,11 @@ package ML_Controllers
             scope.isTorpedoShoot = false;
             scope.isFire = false;
             
-            var player:Player = GameInfoHolder.instance.mapPlayers[lastAvatarPythonIdAdded];
+            this.player = GameInfoHolder.instance.mapPlayers[lastAvatarPythonIdAdded];
+            this.avatarName = this.player.name;
             
-            this.avatarName = player.name;
             var statistics:Object = ML_Models.ML_WebInfoHolder.instance.getStatisticsObjectIfExists(this.avatarName);
+            
             Cc.log(statistics.real_data, this.avatarName);
             if (!statistics.real_data) {
                 ML_Models.ML_WebInfoHolder.instance.evChanged.addCallback(this.onHolderChanged);
@@ -51,8 +54,10 @@ package ML_Controllers
             scope.isFire = arg1;
         }
         
-        private function setTorpedoStateMarker(arg1:Boolean):void{
-            scope.isTorpedoShoot = arg1;
+        private function setTorpedoStateMarker(arg1:Boolean):void {
+            if(this.player.relation != PlayerRelation.ENEMY){
+                scope.isTorpedoShoot = arg1;
+            }
         }
         
         private function onHolderChanged(playerName:String):void {

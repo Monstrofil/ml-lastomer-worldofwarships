@@ -9,6 +9,8 @@ package
     import XVMDatahubController;
     import ML_Controllers.ML_CurrentTargetController;
     import ML_Controllers.ML_DamageController;
+    import ML_Controllers.ML_EntitiesController;
+    import ML_Controllers.ML_EntityStatisticsController;
     import ML_Controllers.ML_MarkerInfoController;
     import ML_Models.ML_WebInfoHolder;
     import ML_Unbound.ML_UnboundApplication;
@@ -66,6 +68,8 @@ package
         public var _XVMDatahubController:XVMDatahubController;
         public var _ML_Controllers_ML_CurrentTargetController:ML_Controllers.ML_CurrentTargetController;
         public var _ML_Controllers_ML_DamageController:ML_Controllers.ML_DamageController;
+        public var _ML_Controllers_ML_EntitiesController:ML_Controllers.ML_EntitiesController;
+        public var _ML_Controllers_ML_EntityStatisticsController:ML_Controllers.ML_EntityStatisticsController;
         public var _ML_Controllers_ML_MarkerInfoController:ML_Controllers.ML_MarkerInfoController;
         public var _ML_Models_ML_WebInfoHolder:ML_Models.ML_WebInfoHolder;
         public var _ML_Unbound_ML_UnboundApplication:ML_Unbound.ML_UnboundApplication;
