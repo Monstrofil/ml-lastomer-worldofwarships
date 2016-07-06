@@ -743,11 +743,6 @@
 		<bind name="entityDH" value="'userPrefsEntity'; userPrefsCollection[0].id"/>
 		<bind name="watchDH" value="'userPrefs'; ['userPrefsEntity.userPrefs.evUserPrefsChanged']; userPrefsEntity.userPrefs.userPrefs"/>
 		
-	
-        <bind name="watch" value=" 'showSettingsBox'; (userPrefs.elementsGroupExpand.showSettingsBox == null) ? false : userPrefs.elementsGroupExpand.showSettingsBox "/>
-        <bind name="catch" value="'switchShipIconsBox'; { showSettingsBox: !showSettingsBox }; 'saveshowSettingsBox'"/>
-        <bind name="action" value="'saveshowSettingsBox' ; 'setUserPref' ; {value: showSettingsBox, name: 'elementsGroupExpand', subName: 'showSettingsBox'}"/>
-		
 		<bind name="watch" value=" 'targetInfoEnabled'; (userPrefs.elementsGroupExpand.targetInfoEnabled == null) ? false : userPrefs.elementsGroupExpand.targetInfoEnabled "/>
 		<bind name="catch" value="'switchTargetInfoEnabledBox'; { targetInfoEnabled: !targetInfoEnabled }; 'saveTargetInfoEnabled'"/>
 		<bind name="action" value="'saveTargetInfoEnabled' ; 'setUserPref' ; {value: targetInfoEnabled, name: 'elementsGroupExpand', subName: 'targetInfoEnabled'}"/>
@@ -826,6 +821,10 @@
                 <top value="2px"/>
                 <right value="100px"/>
 			</style>
+            
+            <bind name="watch" value=" 'showSettingsBox'; (userPrefs.elementsGroupExpand.showSettingsBox == null) ? false : userPrefs.elementsGroupExpand.showSettingsBox "/>
+            <bind name="catch" value="'switchShipIconsBox'; { showSettingsBox: !showSettingsBox }; 'saveshowSettingsBox'"/>
+            <bind name="action" value="'saveshowSettingsBox' ; 'setUserPref' ; {value: showSettingsBox, name: 'elementsGroupExpand', subName: 'showSettingsBox'}"/>
 
 			<block className="button_settings_small" type="native">
 				<bind name="dispatch" value="'click'; 'switchShipIconsBox'"/>
@@ -848,6 +847,10 @@
         <bind name="left" value="SBPositionX"/>
         <bind name="top" value="SBPositionY"/>
         
+        
+        <bind name="watch" value=" 'showSettingsBox'; (userPrefs.elementsGroupExpand.showSettingsBox == null) ? false : userPrefs.elementsGroupExpand.showSettingsBox "/>
+        <bind name="catch" value="'switchShipIconsBox'; { showSettingsBox: !showSettingsBox }; 'saveshowSettingsBox'"/>
+        <bind name="action" value="'saveshowSettingsBox' ; 'setUserPref' ; {value: showSettingsBox, name: 'elementsGroupExpand', subName: 'showSettingsBox'}"/>
         
         <bind name="appear" value="'addedToStage'; 0.6; 0; {alpha: 0}; {alpha: 1}"/>
         <style>
