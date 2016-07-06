@@ -744,9 +744,9 @@
 		<bind name="watchDH" value="'userPrefs'; ['userPrefsEntity.userPrefs.evUserPrefsChanged']; userPrefsEntity.userPrefs.userPrefs"/>
 		
 	
-        <bind name="watch" value=" 'showSettingsBox'; (userPrefs.elementsGroupExpand.showSettingsBoxBox == null) ? false : userPrefs.elementsGroupExpand.showSettingsBoxBox "/>
+        <bind name="watch" value=" 'showSettingsBox'; (userPrefs.elementsGroupExpand.showSettingsBox == null) ? false : userPrefs.elementsGroupExpand.showSettingsBox "/>
         <bind name="catch" value="'switchShipIconsBox'; { showSettingsBox: !showSettingsBox }; 'saveshowSettingsBox'"/>
-        <bind name="action" value="'saveshowSettingsBox' ; 'setUserPref' ; {value: showSettingsBox, name: 'elementsGroupExpand', subName: 'showSettingsBoxBox'}"/>
+        <bind name="action" value="'saveshowSettingsBox' ; 'setUserPref' ; {value: showSettingsBox, name: 'elementsGroupExpand', subName: 'showSettingsBox'}"/>
 		
 		<bind name="watch" value=" 'targetInfoEnabled'; (userPrefs.elementsGroupExpand.targetInfoEnabled == null) ? false : userPrefs.elementsGroupExpand.targetInfoEnabled "/>
 		<bind name="catch" value="'switchTargetInfoEnabledBox'; { targetInfoEnabled: !targetInfoEnabled }; 'saveTargetInfoEnabled'"/>
@@ -892,6 +892,10 @@
                         <bind name="dispatch" value="'click'; 'switchShipIconsBox'"/>
                     </block>
                 </block>
+                
+                <style>
+                    <width value="400px"/>
+                </style>
                 
                 <bind name="instance" value="'HorizontalDivider'; {}"/>
                 <params>
