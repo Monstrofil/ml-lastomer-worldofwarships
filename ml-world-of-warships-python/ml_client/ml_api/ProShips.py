@@ -24,9 +24,9 @@ class ProShips(object):
         if BigWorld.server() == RU_SERVER:
             self.loadRU(usernames, callback)
         elif BigWorld.server() == EU_SERVER:
-            self.loadCOM(usernames, callback, prefix='eu')
+            self.loadCOM(usernames, callback, prefix='eu', appid='be3e454f976a3dfa4ad34603bbb303f0')
         elif BigWorld.server() == NA_SERVER:
-            self.loadCOM(usernames, callback, prefix='com', app_id='afee1d10718a3beaccd79d0f60251e85')
+            self.loadCOM(usernames, callback, prefix='com', appid='afee1d10718a3beaccd79d0f60251e85')
         elif BigWorld.server() == ASIA_SERVER:
             self.loadCOM(usernames, callback, prefix='asia')
         else:
