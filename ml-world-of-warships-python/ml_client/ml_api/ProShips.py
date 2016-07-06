@@ -26,13 +26,13 @@ class ProShips(object):
         elif BigWorld.server() == EU_SERVER:
             self.loadCOM(usernames, callback, prefix='eu')
         elif BigWorld.server() == NA_SERVER:
-            self.loadCOM(usernames, callback, prefix='com')
+            self.loadCOM(usernames, callback, prefix='com', app_id='afee1d10718a3beaccd79d0f60251e85')
         elif BigWorld.server() == ASIA_SERVER:
             self.loadCOM(usernames, callback, prefix='asia')
         else:
             self.loadRU(usernames, callback)
 
-    def loadCOM(self, usernames, callback, prefix='ru'):
+    def loadCOM(self, usernames, callback, prefix='ru', appid='demo'):
         responseBlock = {
             "id": "0",
             "name": "",
@@ -64,7 +64,7 @@ class ProShips(object):
 
         url = "http://api.worldoftanks.%s/wgn/account/list/" % prefix
         params = {
-            'application_id':'demo',
+            'application_id':appid,
             'type':'exact',
             'search':','.join(usernames)
         }
@@ -79,7 +79,7 @@ class ProShips(object):
                 ids.append(player['account_id'])
             url = "http://api.worldoftanks.%s/wgn/clans/membersinfo/" % prefix
             params = {
-                'application_id':'demo',
+                'application_id':appid,
                 'fields':'account_id,account_name,clan.clan_id,clan.tag',
                 'account_id':','.join(map(str, ids))
             }
@@ -97,7 +97,7 @@ class ProShips(object):
 
             url = "http://api.worldofwarships.%s/wows/account/info/" % prefix
             params = {
-                'application_id':'demo',
+                'application_id':appid,
                 'fields':'nickname,statistics.pvp.battles,statistics.pvp.xp,statistics.pvp.wins,statistics.pvp.frags,statistics.pvp.battles,statistics.pvp.wins,statistics.pvp.frags,statistics.pvp.damage_dealt,statistics.pvp.survived_battles',
                 'account_id':','.join(map(str, ids))
             }
