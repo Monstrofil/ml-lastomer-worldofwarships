@@ -21,16 +21,18 @@ ASIA_SERVER = 'login.worldofwarships.asia:20020'
 
 class ProShips(object):
     def loadStatistics(self, usernames, callback):
+        pureUsernames = [user[0] for user in usernames]
+        nameWithShip = ['.'.join(user) for user in usernames]
         if BigWorld.server() == RU_SERVER:
-            self.loadRU(usernames, callback)
+            self.loadRU(nameWithShip, callback)
         elif BigWorld.server() == EU_SERVER:
-            self.loadCOM(usernames, callback, prefix='eu', appid='be3e454f976a3dfa4ad34603bbb303f0')
+            self.loadCOM(pureUsernames, callback, prefix='eu', appid='be3e454f976a3dfa4ad34603bbb303f0')
         elif BigWorld.server() == NA_SERVER:
-            self.loadCOM(usernames, callback, prefix='com', appid='afee1d10718a3beaccd79d0f60251e85')
+            self.loadCOM(pureUsernames, callback, prefix='com', appid='afee1d10718a3beaccd79d0f60251e85')
         elif BigWorld.server() == ASIA_SERVER:
-            self.loadCOM(usernames, callback, prefix='asia')
+            self.loadCOM(pureUsernames, callback, prefix='asia')
         else:
-            self.loadRU(usernames, callback)
+            self.loadRU(nameWithShip, callback)
 
     def loadCOM(self, usernames, callback, prefix='ru', appid='demo'):
         responseBlock = {
