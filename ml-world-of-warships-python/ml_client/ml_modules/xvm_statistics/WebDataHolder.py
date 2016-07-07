@@ -39,7 +39,7 @@ class WebDataHolder(object):
 
     def onPlayersListUpdated(self):
         print 'onPlayersListUpdated'
-        self.players = [(player.name, str(player.shipParamsId),) for player in PlayersInfo.iterPlayers()]
+        self.players = [player.name for player in PlayersInfo.iterPlayers()]
 
 
     def loadStatisticsCallback(self, data):
