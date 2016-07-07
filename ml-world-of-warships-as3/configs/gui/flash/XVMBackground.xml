@@ -60,7 +60,7 @@
             <block type="text">
                 <style>
                     <fontFamily value="ML_WOWSSymbol"/>
-                    <textColor value="0x00c5ff"/>
+                    <textColor value="0xFF0060"/>
                     <fontSize value="25px"/>
                     <dropShadowFilter value="1 90 0x08222a 0.7 2.0 2.0 1.0 2"/>
                 </style>
