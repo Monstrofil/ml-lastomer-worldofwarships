@@ -32,6 +32,10 @@
 		<textColor value="0xEEEEEE"/>
 	</css>
     
+    <css name="$FontColorDead">
+        <textColor value="0x5F5F5F"/>
+    </css>
+    
 	<block className="MagicMarkerBlock">		
 		<bind name="collectionDH" value="CC.camera; 'cameraCollection'"/>
 		<bind name="entityDH" value="'cameraEntity'; cameraCollection[0].id"/>
@@ -391,6 +395,7 @@
         <bind name="watchDH" value="'division'; ['playerInfo.avatar.evDivisionChanged']; playerInfo.avatar.division"/>
         <bind name="watchDH" value="'isInSameDivision'; ['playerInfo.avatar.evDivisionChanged']; playerInfo.avatar.isInSameDivision"/>
         <bind name="watchDH" value="'divisionSign'; ['playerInfo.avatar.evDivisionChanged']; playerInfo.avatar.divisionSign"/>
+        <bind name="watchDH" value="'statistics'; ['playerInfo.statistics.evChanged']; playerInfo.statistics.statistics"/>
         
         <bind name="var" value="{healthP:'100%'}"/>
         <bind name="watchDH" value="'healthP'; ['playerInfo.health.evValueChanged']; (((playerInfo.health.value > 0) &amp;&amp; is_alive) ? ((100 * playerInfo.health.value / playerInfo.health.max) + '%'): ( is_alive ? healthP: '0%'))"/>
@@ -404,9 +409,9 @@
                 <position value="absolute"/>
             </style>
             <bind name="style" value="'width'; healthP"/>
-            <bind name="style" value="'backgroundColor'; '0x3032CD32'"/>
+            <bind name="style" value="'backgroundColor'; '0x4032CD32'"/>
             
-            <bind name="style" value="'marginRight'; (showStatistics &amp;&amp; statistics.real_data) ? '43px' : '0px'"/>
+            <bind name="style" value="'marginRight'; (showStatistics &amp;&amp; statistics.real_data) ? '70px' : '0px'"/>
         </block>
         
         <block className="BackgroundRowImg">
@@ -426,7 +431,7 @@
         <block>
             <styleClass value="$MiddleVAligned"/>
             <style>
-                <width value="30px"/> 
+                <width value="25px"/> 
             </style>
             <block className="division_item" type="native">
                 <bind name="visible" value="division &gt; 0"/>
@@ -438,15 +443,14 @@
             </block>
         </block>
             
-            
-        <bind name="controller" value="ML_Controllers.ML_EntityStatisticsController; playerInfo.avatar.name"/>
+        
 
         <block type="text">
             <bind name="text" value="playerInfo.avatar.name"/>
             <bind name="visible" value="earIndex"/>
             <styleClass value="$FontSizeML"/>
             
-            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$None'"/>
+            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$FontColorDead'"/>
             
             <style>
                 <width value="55px"/>
@@ -458,7 +462,7 @@
             <styleClass value="$FontSizeML"/>
             <bind name="class" value="'$Bold'"/>
             
-            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$None'"/>
+            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$FontColorDead'"/>
             
             <style>
                 <width value="65px"/>
@@ -469,7 +473,7 @@
             <bind name="text" value="ship.levelRome"/>
             <styleClass value="$FontSizeML"/>
             
-            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$None'"/>
+            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$FontColorDead'"/>
             
             <style>
                 <width value="20px"/>
@@ -481,7 +485,7 @@
         <block type="text">
             <bind name="text" value="ship.subtype=='Destroyer'?'&#x33;':ship.subtype=='Cruiser'?'&#x32;':ship.subtype=='Battleship'?'&#x31;':'&#x30;'"/>
             <styleClass value="$TextDefault"/>
-            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$None'"/>
+            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$FontColorDead'"/>
             
             <style>
                 <width value="20"/>
@@ -495,7 +499,7 @@
             <bind name="text" value="frags"/>
             <styleClass value="$FontSizeML"/>
             
-            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$None'"/>
+            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$FontColorDead'"/>
             
             <style>
                 <width value="15px"/>
@@ -516,12 +520,29 @@
             <styleClass value="$FontSizeML"/>
             <style>
                 <marginLeft value="5px"/>
-                <width value="40px"/>
+                <width value="30px"/>
                 <dropShadowFilter value="1 90 0x08222a 0.7 2.0 2.0 1.0 2"/>
             </style>
         </block>
+            
+        <block type="text">
+            <style>
+                <textColor value="0xFF0404"/>
+                <marginLeft value="5px"/>
+                <width value="30px"/>
+                <dropShadowFilter value="1 90 0x08222a 0.7 2.0 2.0 1.0 2"/>
+            </style>
+            
+            <styleClass value="$FontSizeML"/>
+            <bind name="class" value="'$Bold'"/>
+            <bind name="style" value="'textColor'; ('0x'+statistics.all_wins_color)"/>
+            <bind name="text" value="statistics.all_wins"/>
+            <bind name="visible" value="showStatistics &amp;&amp; statistics.real_data"/>
+            
+        </block>
         
-        <bind name="visible" value="is_alive"/>
+        <bind name="visible" value="is_alive ? true: deadEnabled"/>
+        <bind name="alpha" value="(!is_alive)?0.7:1"/>
             
         <style>
             <marginBottom value="1px"/>
@@ -539,6 +560,7 @@
         <bind name="watchDH" value="'isInSameDivision'; ['playerInfo.avatar.evDivisionChanged']; playerInfo.avatar.isInSameDivision"/>
         <bind name="watchDH" value="'division'; ['playerInfo.avatar.evDivisionChanged']; playerInfo.avatar.division"/>
         <bind name="watchDH" value="'divisionSign'; ['playerInfo.avatar.evDivisionChanged']; playerInfo.avatar.divisionSign"/>
+        <bind name="watchDH" value="'statistics'; ['playerInfo.statistics.evChanged']; playerInfo.statistics.statistics"/>
         
         <bind name="var" value="{healthP:'100%'}"/>
         <bind name="watchDH" value="'healthP'; ['playerInfo.health.evValueChanged']; (((playerInfo.health.value > 0) &amp;&amp; is_alive) ? ((100 * playerInfo.health.value / playerInfo.health.max) + '%'): ( is_alive ? healthP: '0%'))"/>
@@ -555,8 +577,8 @@
             </style>
             <bind name="scaleX" value="-1"/>
             <bind name="style" value="'width'; healthP"/>
-            <bind name="style" value="'backgroundColor'; '0x30C9D12E'"/>
-            <bind name="style" value="'marginRight'; (showStatistics &amp;&amp; statistics.real_data) ? '65px' : '20px'"/>
+            <bind name="style" value="'backgroundColor'; '0x4032CD32'"/>
+            <bind name="style" value="'marginRight'; (showStatistics &amp;&amp; statistics.real_data) ? '90px' : '20px'"/>
         </block>
         
         <block className="BackgroundRowImg">
@@ -573,15 +595,30 @@
             </style>
             <bind name="scaleX" value="-1"/>
             <bind name="style" value="'backgroundImage'; 'url:../XVMimages/rowBackground.png'"/>
-            <bind name="style" value="'marginRight'; (showStatistics &amp;&amp; statistics.real_data) ? '5px' : '-20px'"/>
+            <bind name="style" value="'marginRight'; (showStatistics &amp;&amp; statistics.real_data) ? '10px' : '-30px'"/>
         </block> 
         
-        <bind name="controller" value="ML_Controllers.ML_EntityStatisticsController; playerInfo.avatar.name"/>
-        <bind name="style" value="'marginLeft'; (showStatistics &amp;&amp; statistics.real_data) ? '0' : '45px'"/>
+        
+        <bind name="style" value="'marginLeft'; (showStatistics &amp;&amp; statistics.real_data) ? '0' : '70px'"/>
             
         <bind name="var" value="{wasVisible:false}"/>
         <bind name="watchDH" value="'visible'; ['playerInfo.visibility.evChanged']; playerInfo.visibility.visible"/>
         <bind name="watchDH" value="'wasVisible'; ['playerInfo.visibility.evChanged']; playerInfo.visibility.visible || wasVisible "/>
+            
+        <block type="text">
+            <style>
+                <textColor value="0xFF0404"/>
+                <marginRight value="5px"/>
+                <width value="30px"/>
+                <dropShadowFilter value="1 90 0x08222a 0.7 2.0 2.0 1.0 2"/>
+            </style>
+            
+            <styleClass value="$FontSizeML"/>
+            <bind name="class" value="'$Bold'"/>
+            <bind name="style" value="'textColor'; ('0x'+statistics.all_wins_color)"/>
+            <bind name="text" value="statistics.all_wins + '%'"/>
+            <bind name="visible" value="showStatistics &amp;&amp; statistics.real_data"/>
+        </block>
         
         <block type="text">
             <bind name="text" value="statistics.all_rate"/>
@@ -591,8 +628,8 @@
             
             <styleClass value="$FontSizeML"/>
             <style>
-                <marginLeft value="5px"/>
-                <width value="40px"/>
+                <marginRight value="5px"/>
+                <width value="30px"/>
                 <dropShadowFilter value="1 90 0x08222a 0.7 2.0 2.0 1.0 2"/>
             </style>
         </block>
@@ -602,7 +639,7 @@
             <bind name="text" value="'A'"/>
             <styleClass value="$TextDefault"/>
             <bind name="style" value="'textColor'; visible ? '0xDDffa500': '0xDDcccccc'"/>
-            <bind name="scaleY" value="wasVisible ? 1 : 0"/>
+            <bind name="scaleY" value="(wasVisible &amp;&amp; is_alive) ? 1 : 0"/>
             
             <style>
                 <width value="20"/>
@@ -617,7 +654,7 @@
             <bind name="text" value="frags"/>
             <styleClass value="$FontSizeML"/>
             
-            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$None'"/>
+            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$FontColorDead'"/>
             
             <style>
                 <width value="15px"/>
@@ -628,7 +665,7 @@
         <block type="text">
             <bind name="text" value="ship.subtype=='Destroyer'?'&#x37;':ship.subtype=='Cruiser'?'&#x36;':ship.subtype=='Battleship'?'&#x35;':'&#x34;'"/>
             <styleClass value="$TextDefault"/>
-            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$None'"/>
+            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$FontColorDead'"/>
             
             <style>
                 <width value="20"/>
@@ -641,7 +678,7 @@
             <bind name="text" value="ship.levelRome"/>
             <styleClass value="$FontSizeML"/>
             
-            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$None'"/>
+            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$FontColorDead'"/>
             
             <style>
                 <width value="20px"/>
@@ -655,7 +692,7 @@
             <styleClass value="$FontSizeML"/>
             <bind name="class" value="'$Bold'"/>
             
-            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$None'"/>
+            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$FontColorDead'"/>
             
             <style>
                 <width value="65px"/>
@@ -669,7 +706,7 @@
             <bind name="visible" value="earIndex"/>
             <styleClass value="$FontSizeML"/>
             
-            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$None'"/>
+            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$FontColorDead'"/>
             
             <style>
                 <width value="55px"/>
@@ -693,7 +730,9 @@
             </block>
         </block>
             
-        <bind name="visible" value="is_alive"/>
+        
+        <bind name="visible" value="is_alive ? true: deadEnabled"/>
+        <bind name="alpha" value="(!is_alive)?0.7:1"/>
             
         <style>
             <marginBottom value="1px"/>
@@ -713,11 +752,12 @@
             <style>
                 <position value="absolute"/>
             </style>
+            <bind name="watch" value="'deadEnabled'; (userPrefs.elementsGroupExpand.deadEnabled == null) ? false : userPrefs.elementsGroupExpand.deadEnabled "/>
             <bind name="watch" value="'earsEnabled'; (userPrefs.elementsGroupExpand.earsEnabled == null) ? true : userPrefs.elementsGroupExpand.earsEnabled "/>
             <bind name="visible" value="earsEnabled"/>
             <bind name="watch" value="'indexEars'; (userPrefs.elementsGroupExpand.indexEars == null) ? false : userPrefs.elementsGroupExpand.indexEars"/>
             <bind name="watch" value="'earsStatisticsEnabled'; (userPrefs.elementsGroupExpand.earsStatisticsEnabled == null) ? true : userPrefs.elementsGroupExpand.earsStatisticsEnabled "/>
-            <bind name="repeat" value="team; 'ML_RowRendererLeft'; {earIndex:indexEars, showStatistics:earsStatisticsEnabled}"/>
+            <bind name="repeat" value="team; 'ML_RowRendererLeft'; {earIndex:indexEars, showStatistics:earsStatisticsEnabled, deadEnabled:deadEnabled}"/>
             <style>
                 <top value="75px"/>
             </style>
@@ -728,10 +768,11 @@
                 <position value="absolute"/>
             </style>
             <bind name="watch" value="'earsEnabled'; (userPrefs.elementsGroupExpand.earsEnabled == null) ? true : userPrefs.elementsGroupExpand.earsEnabled "/>
+            <bind name="watch" value="'deadEnabled'; (userPrefs.elementsGroupExpand.deadEnabled == null) ? false : userPrefs.elementsGroupExpand.deadEnabled "/>
             <bind name="visible" value="earsEnabled"/>
             <bind name="watch" value="'indexEars'; (userPrefs.elementsGroupExpand.indexEars == null) ? false : userPrefs.elementsGroupExpand.indexEars"/>
             <bind name="watch" value="'earsStatisticsEnabled'; (userPrefs.elementsGroupExpand.earsStatisticsEnabled == null) ? true : userPrefs.elementsGroupExpand.earsStatisticsEnabled "/>
-            <bind name="repeat" value="enemy; 'ML_RowRendererRight'; {earIndex:indexEars, showStatistics:earsStatisticsEnabled}"/>
+            <bind name="repeat" value="enemy; 'ML_RowRendererRight'; {earIndex:indexEars, showStatistics:earsStatisticsEnabled, deadEnabled:deadEnabled}"/>
             <style>
                 <top value="75px"/>
                 <align value="right"/>
@@ -948,6 +989,19 @@
                             
                             <bind name="instance" value="'CheckBox'; {switchProperty: earsEnabled, label: 'IDS_SHOWSTATS', _maxTfWidth: 250}"/>
                             <bind name="dispatch" value="'click'; 'switchEarsEnabled'"/>
+                        </block>
+                        
+                        <block className="showDead">
+                            <style>
+                                <scaleX value="0.75"/>
+                                <scaleY value="0.75"/>
+                            </style>
+                            <bind name="watch" value="'deadEnabled'; (userPrefs.elementsGroupExpand.deadEnabled == null) ? false : userPrefs.elementsGroupExpand.deadEnabled "/>
+                            <bind name="catch" value="'switchDeadEnabled'; { deadEnabled: !deadEnabled }; 'saveDeadEnabled'"/>
+                            <bind name="action" value="'saveDeadEnabled' ; 'setUserPref' ; {value: deadEnabled, name: 'elementsGroupExpand', subName: 'deadEnabled'}"/>
+                            
+                            <bind name="instance" value="'CheckBox'; {switchProperty: deadEnabled, label: 'Show dead', _maxTfWidth: 250}"/>
+                            <bind name="dispatch" value="'click'; 'switchDeadEnabled'"/>
                         </block>
                         
                         <block className="showStatistics">
