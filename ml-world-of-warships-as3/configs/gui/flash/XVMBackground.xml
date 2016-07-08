@@ -536,7 +536,7 @@
             <styleClass value="$FontSizeML"/>
             <bind name="class" value="'$Bold'"/>
             <bind name="style" value="'textColor'; ('0x'+statistics.all_wins_color)"/>
-            <bind name="text" value="statistics.all_wins"/>
+            <bind name="text" value="statistics.all_wins + '%'"/>
             <bind name="visible" value="showStatistics &amp;&amp; statistics.real_data"/>
             
         </block>
