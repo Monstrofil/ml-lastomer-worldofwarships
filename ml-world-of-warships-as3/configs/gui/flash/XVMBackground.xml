@@ -211,7 +211,7 @@
 		</style>
 		<styleClass value="$MiddleAligned"/>
 	</block>
-	
+    
 	<block className="XVMCurrentTargetInfoPanel">
 		<bind name="controller" value="ML_Controllers.ML_CurrentTargetController"/>
 		<bind name="visible" value="target!=null &amp;&amp; _targetInfoEnabled"/>
@@ -396,6 +396,7 @@
         <bind name="watchDH" value="'isInSameDivision'; ['playerInfo.avatar.evDivisionChanged']; playerInfo.avatar.isInSameDivision"/>
         <bind name="watchDH" value="'divisionSign'; ['playerInfo.avatar.evDivisionChanged']; playerInfo.avatar.divisionSign"/>
         <bind name="watchDH" value="'statistics'; ['playerInfo.statistics.evChanged']; playerInfo.statistics.statistics"/>
+        <bind name="watchDH" value="'flags'; ['playerInfo.statistics.evChanged']; playerInfo.target.flags"/>
         
         <bind name="var" value="{healthP:'100%'}"/>
         <bind name="watchDH" value="'healthP'; ['playerInfo.health.evValueChanged']; (((playerInfo.health.value > 0) &amp;&amp; is_alive) ? ((100 * playerInfo.health.value / playerInfo.health.max) + '%'): ( is_alive ? healthP: '0%'))"/>
@@ -450,7 +451,8 @@
             <bind name="visible" value="earIndex"/>
             <styleClass value="$FontSizeML"/>
             
-            <bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$FontColorDead'"/>
+            <bind name="style" value="'textColor'; ('0x'+statistics.all_wins_color)"/>
+            <!--<bind name="class" value="is_alive 	? (tkStatus	? '$FontColorTeamkiller': is_self || isInSameDivision ? '$FontColorGolden': '$None'): '$FontColorDead'"/>-->
             
             <style>
                 <width value="55px"/>

@@ -4,9 +4,13 @@ package ML_Controllers
     import lesta.datahub.Collection;
     import lesta.datahub.Entity;
     import lesta.datahub.SortedCollection;
+    import lesta.structs.Player;
+    import lesta.structs.ShipInfo;
     import lesta.unbound.core.UbController;
     import lesta.unbound.expression.IUbExpression;
+    import lesta.utils.GameInfoHolder;
     import ML_Models.ML_WebInfoHolder;
+    import ML_Models.ShipInfoC;
     import ML_Models.Statistics;
 	/**
      * ...
@@ -29,10 +33,29 @@ package ML_Controllers
             
             for each(var e:Entity in teamCollection.items) {
                e.addComponent(ML_WebInfoHolder.instance.getStatisticsComponent(e.avatar.name)); 
+               for each(var player:Player in GameInfoHolder.instance.listAlliedPlayers)
+               {
+                    if (player.name == e.avatar.name) {
+                        var shipInfo:ShipInfoC = new ShipInfoC();
+                        shipInfo.setShipInfo(player.shipParams);
+                        e.addComponent(shipInfo);
+                        break;
+                    }
+               }
             }
             
             for each(var e:Entity in enemyCollection.items) {
                e.addComponent(ML_WebInfoHolder.instance.getStatisticsComponent(e.avatar.name)); 
+               
+                for each(var player:Player in GameInfoHolder.instance.listEnemyPlayers)
+               {
+                    if (player.name == e.avatar.name) {
+                        var shipInfo:ShipInfoC = new ShipInfoC();
+                        shipInfo.setShipInfo(player.shipParams);
+                        e.addComponent(shipInfo);
+                        break;
+                    }
+               }
             }
             
             scope.team = teamCollection.items;
