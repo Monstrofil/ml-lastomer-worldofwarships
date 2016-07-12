@@ -434,18 +434,26 @@
         <bind name="watchDH" value="'healthP'; ['playerInfo.health.evValueChanged']; (((playerInfo.health.value > 0) &amp;&amp; is_alive &amp;&amp; visible) ? ((100 * playerInfo.health.value / playerInfo.health.max) + '%'): ( is_alive ? healthP: '0%'))"/>
         <bind name="dataRefDH" value="'ship'; 'playerInfo.avatar.ship.ref.ship'"/>
         
-        <block className="HealthRow">
+        <block className="HealthRowHolder">
             <style>
                 <width value="100%"/>
                 <height value="100%"/>
-                <blurFilter value="2 2"/>
                 <position value="absolute"/>
             </style>
-            <bind name="style" value="'width'; healthP"/>
-            <bind name="style" value="'backgroundColor'; '0x4032CD32'"/>
-            
             <bind name="style" value="'marginRight'; (showStatistics &amp;&amp; statistics.real_data) ? '70px' : '0px'"/>
+            
+            <block className="HealthRow">
+                <style>
+                    <width value="100%"/>
+                    <height value="100%"/>
+                    <blurFilter value="2 2"/>
+                    <position value="absolute"/>
+                </style>
+                <bind name="style" value="'width'; healthP"/>
+                <bind name="style" value="'backgroundColor'; '0x4032CD32'"/>
+            </block>
         </block>
+        
         
         <block className="BackgroundRowImg">
             <style>
@@ -611,8 +619,15 @@
         <bind name="var" value="{healthP:'100%'}"/>
         <bind name="watchDH" value="'healthP'; ['playerInfo.health.evValueChanged']; (((playerInfo.health.value > 0) &amp;&amp; is_alive) ? ((100 * playerInfo.health.value / playerInfo.health.max) + '%'): ( is_alive ? healthP: '0%'))"/>
         <bind name="dataRefDH" value="'ship'; 'playerInfo.avatar.ship.ref.ship'"/>
-        
-        <block className="HealthRow">
+            
+        <block className="HealthRowHolder">
+            <style>
+                <width value="100%"/>
+                <height value="100%"/>
+                <position value="absolute"/>
+            </style>
+            <bind name="style" value="'marginRight'; (showStatistics &amp;&amp; statistics.real_data) ? '90px' : '20px'"/>
+            
             <style>
                 <width value="100%"/>
                 <height value="100%"/>
@@ -624,7 +639,6 @@
             <bind name="scaleX" value="-1"/>
             <bind name="style" value="'width'; healthP"/>
             <bind name="style" value="'backgroundColor'; '0x4032CD32'"/>
-            <bind name="style" value="'marginRight'; (showStatistics &amp;&amp; statistics.real_data) ? '90px' : '20px'"/>
         </block>
         
         <block className="BackgroundRowImg">
