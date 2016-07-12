@@ -7,13 +7,13 @@
 	this file is beeing used by:		
 		\tools\wows_ui_tools\auto_draw_perf_test\generate_elements_list.py
 -->
-  <elementList>
-    <element name="blank" class="flash.display.MovieClip" url="XVMBackground.swf"/>
+  <elementList>      
+    <element name="blank" class="flash.display.Sprite" url="XVMBackground.swf"/>
       
     <element name="markersContainer" class="flash.display.Sprite" url="gui_slots.swf">
         <properties x='0' y='0'/>
         <properties hitTest = "true"/>     
-    </element>
+    </element>  
       
     <element name="fireScreenEffect" class="FullscreenFireEffectClip" url="fullscreen_effects.swf"/>
     <element name="placeHolderGuidesManager" class="flash.display.MovieClip" url="guide.swf"/>
@@ -138,8 +138,8 @@
     <properties hitTest='true' />
   </element> -->
       
-      
-  <element name="MLBackground" class="MLBackground" url="XVMBackground.swf"/>
+    
+  <element name="MLBackground" class="MLBackground" url="XVMBackground.swf"/> 
   </elementList>
   <controllers>
 	<controller class="XVMDatahubController" clips="MLBackground"/>

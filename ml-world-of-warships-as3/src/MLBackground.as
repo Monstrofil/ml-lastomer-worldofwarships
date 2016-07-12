@@ -55,13 +55,18 @@ package
         
         public function onAddedToStage(e:Event):void {    
             Cc.config.commandLineAllowed = true;
-            Cc.start(this, "debug");
+            Cc.start(this.parent, "debug");
             Cc.y = 200;
             Cc.x = 200;
             
             var xvm:ML_UnboundApplication = new ML_UnboundApplication(this.stage, "RootBlock");
+            this.parent.mouseEnabled = true;
+            this.parent.mouseChildren = true;
+            
+            //InteractiveObjectEx.setHitTestDisable(xvm, false);
             this.parent.addChild(xvm);
         }
+         
         
         
         public var _global:__Global;

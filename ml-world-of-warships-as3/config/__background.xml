@@ -427,10 +427,11 @@
         <bind name="watchDH" value="'shipInfo'; ['playerInfo.shipInfo.evChanged']; playerInfo.shipInfo.shipInfo"/>
         <bind name="watchDH" value="'flags'; ['playerInfo.target.evChanged']; playerInfo.target.flags"/>
         
-        <bind name="call" value="'click'; 'camera.moveCameraToPlayer'; playerInfo.avatar.id"/>
+        <bind name="clickSplit"/> <!-- for left_click -->
+        <bind name="call" value="'left_click'; 'camera.moveCameraToPlayer'; playerInfo.avatar.id"/>
         
         <bind name="var" value="{healthP:'100%'}"/>
-        <bind name="watchDH" value="'healthP'; ['playerInfo.health.evValueChanged']; (((playerInfo.health.value > 0) &amp;&amp; is_alive) ? ((100 * playerInfo.health.value / playerInfo.health.max) + '%'): ( is_alive ? healthP: '0%'))"/>
+        <bind name="watchDH" value="'healthP'; ['playerInfo.health.evValueChanged']; (((playerInfo.health.value > 0) &amp;&amp; is_alive &amp;&amp; visible) ? ((100 * playerInfo.health.value / playerInfo.health.max) + '%'): ( is_alive ? healthP: '0%'))"/>
         <bind name="dataRefDH" value="'ship'; 'playerInfo.avatar.ship.ref.ship'"/>
         
         <block className="HealthRow">
@@ -581,7 +582,7 @@
         <bind name="watchDH" value="'mute'; ['playerInfo.avatar.evMuteChanged']; playerInfo.avatar.mute"/>
             
         <bind name="style" value="'hitTest'; true"/>
-        <bind name="tooltip" value="'ML_MouseInstructionTooltip'; { _mouseInstructions: [{_type: 'right', _instructionText: 'IDS_HINT_CLICK_TO_COMPLAIN'}], _maxWidth: 250}"/>
+        <bind name="tooltip" value="'ML_MouseInstructionTooltip'; { _mouseInstructions: [{_type: 'left', _instructionText: 'IDS_HELP_DEAD_AHEAD_CAMERA'}, {_type: 'right', _instructionText: 'IDS_HINT_CLICK_TO_COMPLAIN'}], _maxWidth: 250}"/>
         <bind name="menu" value="'ML_ComplaintMenu'; { _nickname: player.name, _mute: mute, _playerId: player.id, _isInSameDivision: isInSameDivision, _battleType: gameInfo.battleType }; null; 'contextMenuVisible'"/>
         <bind name="dispatch" value="'buttonClick'; 'Tooltip.Close'; {}"/>
         <bind name="name" value="'contextMenuVisible_' + !!(contextMenuVisible) + '_' + avatar.name"/>
@@ -604,7 +605,8 @@
         <bind name="watchDH" value="'divisionSign'; ['playerInfo.avatar.evDivisionChanged']; playerInfo.avatar.divisionSign"/>
         <bind name="watchDH" value="'statistics'; ['playerInfo.statistics.evChanged']; playerInfo.statistics.statistics"/>
         
-        <bind name="call" value="'click'; 'camera.moveCameraToPlayer'; playerInfo.avatar.id"/>
+        <bind name="clickSplit"/> <!-- for left_click -->
+        <bind name="call" value="'left_click'; 'camera.moveCameraToPlayer'; playerInfo.avatar.id"/>
         
         <bind name="var" value="{healthP:'100%'}"/>
         <bind name="watchDH" value="'healthP'; ['playerInfo.health.evValueChanged']; (((playerInfo.health.value > 0) &amp;&amp; is_alive) ? ((100 * playerInfo.health.value / playerInfo.health.max) + '%'): ( is_alive ? healthP: '0%'))"/>
@@ -810,7 +812,7 @@
             </style>
             <bind name="watch" value="'deadEnabled'; (userPrefs.elementsGroupExpand.deadEnabled == null) ? false : userPrefs.elementsGroupExpand.deadEnabled "/>
             <bind name="watch" value="'earsEnabled'; (userPrefs.elementsGroupExpand.earsEnabled == null) ? true : userPrefs.elementsGroupExpand.earsEnabled "/>
-            <bind name="visible" value="earsEnabled &amp;&amp; !camera.isTactical"/>
+            <bind name="visible" value="earsEnabled &amp;&amp; !(camera.isTactical)"/>
             <bind name="watch" value="'indexEars'; (userPrefs.elementsGroupExpand.indexEars == null) ? false : userPrefs.elementsGroupExpand.indexEars"/>
             <bind name="watch" value="'earsStatisticsEnabled'; (userPrefs.elementsGroupExpand.earsStatisticsEnabled == null) ? true : userPrefs.elementsGroupExpand.earsStatisticsEnabled "/>
             <bind name="repeat" value="team; 'ML_RowRendererLeft'; {earIndex:indexEars, showStatistics:earsStatisticsEnabled, deadEnabled:deadEnabled}"/>
@@ -825,7 +827,7 @@
             </style>
             <bind name="watch" value="'earsEnabled'; (userPrefs.elementsGroupExpand.earsEnabled == null) ? true : userPrefs.elementsGroupExpand.earsEnabled "/>
             <bind name="watch" value="'deadEnabled'; (userPrefs.elementsGroupExpand.deadEnabled == null) ? false : userPrefs.elementsGroupExpand.deadEnabled "/>
-            <bind name="visible" value="earsEnabled &amp;&amp; !camera.isTactical"/>
+            <bind name="visible" value="earsEnabled &amp;&amp; !(camera.isTactical)"/>
             <bind name="watch" value="'indexEars'; (userPrefs.elementsGroupExpand.indexEars == null) ? false : userPrefs.elementsGroupExpand.indexEars"/>
             <bind name="watch" value="'earsStatisticsEnabled'; (userPrefs.elementsGroupExpand.earsStatisticsEnabled == null) ? true : userPrefs.elementsGroupExpand.earsStatisticsEnabled "/>
             <bind name="repeat" value="enemy; 'ML_RowRendererRight'; {earIndex:indexEars, showStatistics:earsStatisticsEnabled, deadEnabled:deadEnabled}"/>
