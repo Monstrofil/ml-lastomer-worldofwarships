@@ -106,8 +106,8 @@ package ML_Unbound
             
             if(this.rootBlock)
             {
-                this._root.style.width = stageWidth;
-                this._root.style.height = stageHeight;
+                this._root.style.width = arg1;
+                this._root.style.height = arg2;
                 this._root.invalidateChildren();
                 this._root.invalidateStageRelativeChildren();
                 this._root.update(true);
