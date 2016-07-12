@@ -98,7 +98,7 @@ class ConsumablesController {
     }
     
     private function setupCallbacks(id:int):void {
-        GameDelegate.addCallBack("onConsumableUsed[" + id + "]", this, this.onConsumableUsed);
+        //GameDelegate.addCallBack("onConsumableUsed[" + id + "]", this, this.onConsumableUsed);
         Cc.log('onConsumableUsed[" + id + "]"');
     }
     

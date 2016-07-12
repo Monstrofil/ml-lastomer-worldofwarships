@@ -1,6 +1,8 @@
 /**
  * ...
  * @author Monstrofil
+ * 
+ * Here you can find a lot of bad code. I know that this should be re-written :)
  */
 package ML_Unbound
 {
@@ -88,8 +90,6 @@ package ML_Unbound
             HotKeyManager.instance.init();
             CapsLockManager.instance.init();
             GameDelegate.addCallBack(Calls.MainScene_updateStage, this, this.updateStage);
-
-            initialize(200, "ML");
         }
         
         public function fini():void {
@@ -104,7 +104,6 @@ package ML_Unbound
             this.mSizeStage.y = arg2;
             Cc.info(arg1, arg2);
             
-            this.setStageSize(arg1, arg2);
             if(this.rootBlock)
             {
                 this._root.style.width = stageWidth;
@@ -155,15 +154,13 @@ package ML_Unbound
             this.central.onEvent("startShow", null, UbScope.EVENT_DIRECTION_DOWN);
             this.central.start();
             
-            
-            
             this.central.onEvent("onBecomeTop", null, UbScope.EVENT_DIRECTION_DOWN);
             dispatchState(WindowStates.READY_FOR_DATA);
             
             instance = this;
             evComplete.invoke();
             
-            setBackgroundVisible(true);
+            //setBackgroundVisible(true);
             
             super.beforeOpen( { } );
             this.onBecomeTop( { } );
@@ -259,7 +256,6 @@ package ML_Unbound
             central.setGlobalDefinition("dataHub", XVMDatahubController.xvmDataHub);
             this.mSizeStage.x = this.mStage.stageWidth;
             this.mSizeStage.y = this.mStage.stageHeight;
-            this.setStageSize(this.mStage.stageWidth, this.mStage.stageHeight);
             central.setGlobalDefinition("stageSize", mSizeStage);
             central.setGlobalDefinition("CC", lesta.constants.ComponentClass);
             central.setGlobalDefinition("VoteTypes", lesta.constants.VoteConstants);
