@@ -3,8 +3,7 @@ UUIDFILE = "UUIDFILE.DATA"
 tid = 'UA-57419165-5'
 description = 'XVM_LASTOMER'
 author = 'by Monstrofil & z1ooo & Hootorez'
-version = 'v5.92 (with site auth)'
-
+version = 'v6.0 (with site auth)'
 try:
     UID = open(UUIDFILE, 'rb').read()
 except:

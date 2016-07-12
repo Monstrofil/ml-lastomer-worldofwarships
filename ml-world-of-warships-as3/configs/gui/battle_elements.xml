@@ -8,13 +8,15 @@
 		\tools\wows_ui_tools\auto_draw_perf_test\generate_elements_list.py
 -->
   <elementList>
-	<element name="XVMBackground" class="XVMBackground" url="XVMBackground.swf"/>
+    <element name="blank" class="flash.display.MovieClip" url="XVMBackground.swf"/>
+      
+    <element name="markersContainer" class="flash.display.Sprite" url="gui_slots.swf">
+        <properties x='0' y='0'/>
+        <properties hitTest = "true"/>     
+    </element>
+      
     <element name="fireScreenEffect" class="FullscreenFireEffectClip" url="fullscreen_effects.swf"/>
     <element name="placeHolderGuidesManager" class="flash.display.MovieClip" url="guide.swf"/>
-    <element name="markersContainer" class="flash.display.Sprite" url="gui_slots.swf">
-      <properties x='0' y='0'/>
-	  <properties hitTest = "true"/>
-    </element>
     <element name="weaponsPanel" class="WeaponsPanelClip" url="weapons_panel.swf" autoPerfTestGroup="weapons">
       <properties hitTest = "true"/>
     </element>
@@ -48,7 +50,7 @@
     </element>
     <element name="compassClip" class="CompassClip" url="ship_doll.swf" autoPerfTestGroup="shipDoll"/>
     <element name="shipDollClip" class="DollClip" url="ship_doll.swf" autoPerfTestGroup="shipDoll">
-      <properties showAllGuns="true"/>
+      <properties showAllGuns="false"/>
     </element>
   <element name="alarmClipCenter" class="AlarmClipCenter" url="dangers.swf">
     <properties dangerClipClassName='AlarmSignalClipCenter'/>
@@ -135,10 +137,12 @@
   <!--  <element name="helpScreen" class="HelpScreenClip" url="help_panel.swf" autoPerfTest="false">
     <properties hitTest='true' />
   </element> -->
-  
+      
+      
+  <element name="MLBackground" class="MLBackground" url="XVMBackground.swf"/>
   </elementList>
   <controllers>
-	<controller class="XVMDatahubController" clips="XVMBackground"/>
+	<controller class="XVMDatahubController" clips="MLBackground"/>
     <controller class="lesta.dialogs.battle_window_controllers.MinimapController" clips="minimapClip"/>
     <controller class="lesta.dialogs.battle_window_controllers.ModulesPanelController" clips="modulesBar"/>
     <controller class="lesta.dialogs.battle_window_controllers.ShipStateController" clips="shipStateBars,shipStateBars.vehicle_hp,shipStateBars.vehicle_hp_text,shipStateBars.ship_name"/>

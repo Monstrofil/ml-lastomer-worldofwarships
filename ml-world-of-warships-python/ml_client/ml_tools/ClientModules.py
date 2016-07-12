@@ -18,9 +18,9 @@ try: #replace scripts when radio will appear 0.5.8
     import m96e062f.m43140dc as i18n
     from gui.Scaleform.mfbee238 import mfbee238 as VehicleStateController
 except:
-    import m4062d8b as PlayersInfo
-    import mb36aa62.m7f06837 as i18n
-    from gui.Scaleform.m6d001af import m6d001af as VehicleStateController
+    import mec5416a as PlayersInfo
+    import m49338dd.ma83fcdc as i18n
+    from gui.Scaleform.md7d85dd import md7d85dd as VehicleStateController
 
 #058
 #DialogManager: m944c932

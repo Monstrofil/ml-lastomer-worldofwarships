@@ -2,6 +2,9 @@
 
 python prebuild.py
 /home/monstrofil/dev/flash/flex/bin/mxmlc -load-config+=WorldofWarshipsHammerConfigUbuntu.xml -omit-trace-statements -debug=false -incremental=true -swf-version=12 -o $WORKSPACE/build/gui/flash/XVMBackground.swf
-/usr/bin/python /home/monstrofil/dev/xml2as/xml2as.py.pyc -i $WORKSPACE/ml-world-of-warships-as3/configs/gui/unbound/dock.xml -n MLDock -f /home/monstrofil/dev/flash/flex/bin/mxmlc
-/home/monstrofil/dev/flash/flex/bin/mxmlc MLDock.as -compatibility-version 4.12.1 -output $WORKSPACE/build/gui/flash/MLDock.swf
+
+mkdir ml-lastomer
+python file_divide.py config/__background.xml ml-lastomer/ RootBlock
+cp -R ml-lastomer/ configs/gui/flash/ml-lastomer/
+
 cp -a configs/. $WORKSPACE/build/
