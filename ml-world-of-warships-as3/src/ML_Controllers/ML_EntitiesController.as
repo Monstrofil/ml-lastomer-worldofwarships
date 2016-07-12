@@ -1,5 +1,6 @@
 package ML_Controllers 
 {
+    import lesta.components.Avatar;
     import lesta.constants.ComponentClass;
     import lesta.datahub.Collection;
     import lesta.datahub.Entity;
@@ -10,6 +11,7 @@ package ML_Controllers
     import lesta.unbound.expression.IUbExpression;
     import lesta.utils.GameInfoHolder;
     import ML_Models.ML_WebInfoHolder;
+    import ML_Models.PlayerInfo;
     import ML_Models.ShipInfoC;
     import ML_Models.Statistics;
 	/**
@@ -39,6 +41,10 @@ package ML_Controllers
                         var shipInfo:ShipInfoC = new ShipInfoC();
                         shipInfo.setShipInfo(player.shipParams);
                         e.addComponent(shipInfo);
+                        
+                        var playerInfo:PlayerInfo = new PlayerInfo();
+                        playerInfo.setPlayer(player);
+                        e.addComponent(playerInfo);
                         break;
                     }
                }
@@ -53,6 +59,10 @@ package ML_Controllers
                         var shipInfo:ShipInfoC = new ShipInfoC();
                         shipInfo.setShipInfo(player.shipParams);
                         e.addComponent(shipInfo);
+                        
+                        var playerInfo:PlayerInfo = new PlayerInfo();
+                        playerInfo.setPlayer(player);
+                        e.addComponent(playerInfo);
                         break;
                     }
                }

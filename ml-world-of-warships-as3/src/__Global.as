@@ -4,14 +4,17 @@ package
 	 * ...
 	 * @author Monstrofil
 	 */
+    import MLBackground;
     import ShipIconButtonClip;
-    import XVMBackground;
     import XVMDatahubController;
+    import ML_Bindings.SFMCallBinding;
     import ML_Controllers.ML_CurrentTargetController;
     import ML_Controllers.ML_DamageController;
     import ML_Controllers.ML_EntitiesController;
     import ML_Controllers.ML_MarkerInfoController;
     import ML_Models.ML_WebInfoHolder;
+    import ML_Models.PlayerInfo;
+    import ML_Models.ShipInfoC;
     import ML_Models.Statistics;
     import ML_Unbound.ML_UnboundApplication;
     import ML_Utils.ML_ManySWFLoader;
@@ -63,14 +66,17 @@ package
     import monstrofil.utils.utils;
 	public class __Global 
 	{
+        public var _MLBackground:MLBackground;
         public var _ShipIconButtonClip:ShipIconButtonClip;
-        public var _XVMBackground:XVMBackground;
         public var _XVMDatahubController:XVMDatahubController;
+        public var _ML_Bindings_SFMCallBinding:ML_Bindings.SFMCallBinding;
         public var _ML_Controllers_ML_CurrentTargetController:ML_Controllers.ML_CurrentTargetController;
         public var _ML_Controllers_ML_DamageController:ML_Controllers.ML_DamageController;
         public var _ML_Controllers_ML_EntitiesController:ML_Controllers.ML_EntitiesController;
         public var _ML_Controllers_ML_MarkerInfoController:ML_Controllers.ML_MarkerInfoController;
         public var _ML_Models_ML_WebInfoHolder:ML_Models.ML_WebInfoHolder;
+        public var _ML_Models_PlayerInfo:ML_Models.PlayerInfo;
+        public var _ML_Models_ShipInfoC:ML_Models.ShipInfoC;
         public var _ML_Models_Statistics:ML_Models.Statistics;
         public var _ML_Unbound_ML_UnboundApplication:ML_Unbound.ML_UnboundApplication;
         public var _ML_Utils_ML_ManySWFLoader:ML_Utils.ML_ManySWFLoader;

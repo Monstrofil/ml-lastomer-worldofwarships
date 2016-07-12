@@ -21,10 +21,11 @@ package ML_Controllers
         
         private var avatarName:String = "";
         private var player:Player = null;
+        private var consumablesController:ConsumablesController;
+        
         public function ML_MarkerInfoController() 
         {
             super();
-            
         }
         
         public override function init(arg1:Vector.<IUbExpression>):void
@@ -48,6 +49,13 @@ package ML_Controllers
             scope.statistics = statistics;
             GameDelegate.addCallBack("setFireStateMarker[" + lastAvatarPythonIdAdded + "]", this, this.setFireStateMarker);
             GameDelegate.addCallBack("setShootTorpedo[" + lastAvatarPythonIdAdded + "]", this, this.setTorpedoStateMarker);
+            
+            this.consumablesController = new ConsumablesController(lastAvatarPythonIdAdded);
+            scope.comsumables = consumablesController.consumables; 
+            
+            this.consumablesController.evChanged.addCallback(function(...rest):void {
+               scope.comsumables = consumablesController.consumables; 
+            });
         }
         
         private function setFireStateMarker(arg1:Boolean):void{
@@ -73,4 +81,34 @@ package ML_Controllers
         
     }
 
+}
+import com.junkbyte.console.Cc;
+import lesta.utils.GameInfoHolder;
+import lesta.utils.Invoker;
+import lesta.data.GameDelegate;
+
+class ConsumablesController {
+    public var consumables:Array = [];
+    
+    public function ConsumablesController(id:int) {
+        super()
+        this.evChanged.parent = this;
+        
+        this.setupCallbacks(id);
+    }
+    
+    private function setupCallbacks(id:int):void {
+        GameDelegate.addCallBack("onConsumableUsed[" + id + "]", this, this.onConsumableUsed);
+        Cc.log('onConsumableUsed[" + id + "]"');
+    }
+    
+    private function onConsumableUsed(name:String, timeLeft:Number) {
+        GameInfoHolder.instance.serverTimeDelta = 0;
+        this.consumables.push( { 'name':name, 'timeLeft':(timeLeft * 1000 + new Date().time) / 1000 } );
+        Cc.log('onConsumableUsed[" + id + "]"', name, timeLeft, new Date().time, (timeLeft * 1000 + new Date().time) / 1000, GameInfoHolder.instance.serverTimeDelta);
+        
+        this.evChanged.invoke([this]);
+    }
+    
+    public var evChanged:Invoker = new Invoker();
 }

@@ -55,6 +55,7 @@
   <libraryPaths>
     <element path="lib\Console.swc" />
     <element path="lib\wows_library.swc" />
+    <element path="lib\Ml-as3-xml-divider.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>
@@ -74,7 +75,7 @@
   </library>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
-    <compile path="src\XVMBackground.as" />
+    <compile path="src\MLBackground.as" />
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>
@@ -82,7 +83,14 @@
   </hiddenPaths>
   <!-- Executed before build -->
   <preBuildCommand>"D:\workspace\python27\python.exe" "$(ProjectDir)/prebuild.py" "$(ProjectDir)/src/"
-xcopy /s /Y configs "C:\Games\World_of_Warships\res_mods\0.5.8.0"</preBuildCommand>
+
+mkdir ml-lastomer
+python file_divide.py $(ProjectDir)/config/__background.xml ml-lastomer/ RootBlock
+cp -R ml-lastomer/ $(ProjectDir)/configs/gui/flash/ml-lastomer/
+xcopy /s /Y configs "C:\Games\World_of_Warships\res_mods\0.5.8.0"
+
+rm -R ml-lastomer
+rm -R $(ProjectDir)/configs/gui/flash/ml-lastomer/</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False">"D:\Monstrofil\SignSWF\SignSWF.bat" C:\Games\World_of_Warships\res_mods\0.5.8.0\gui\flash\</postBuildCommand>
   <!-- Other project options -->

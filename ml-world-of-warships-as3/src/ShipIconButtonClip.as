@@ -19,7 +19,7 @@
     import ML_Controllers.ML_MarkerInfoController;
     import ML_Unbound.ML_UnboundApplication;
     
-    public dynamic class ShipIconButtonClip extends lesta.dialogs.battle_window.markers.container.views.ships.ShipMarker
+    public dynamic class ShipIconButtonClip extends ShipMarker
     {
         private var ubMarker:UbBlock = null;
         
