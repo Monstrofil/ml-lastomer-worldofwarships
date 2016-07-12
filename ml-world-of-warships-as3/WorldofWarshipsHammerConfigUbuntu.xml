@@ -41,7 +41,7 @@
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>src/XVMBackground.as</path-element>
+    <path-element>src/MLBackground.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>
